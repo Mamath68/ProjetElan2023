@@ -1,0 +1,1093 @@
+/* iPads (portrait) ----------- */
+@media only screen and (device-width : 820px) {
+
+    .main2 {
+        display: flex;
+        transition: .5s;
+    }
+
+    .main3 {
+        display: none;
+    }
+
+    nav ol {
+        display: none;
+    }
+
+    #mySidebar {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow: hidden;
+        transition: 0.5s;
+        padding-top: 1rem;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #mySidebar a {
+        padding: 0 20px 0 20px;
+        text-decoration: none;
+        font-size: 30px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    #mySidebar .closebtn {
+        position: absolute;
+        top: 1.5rem;
+        left: 45rem;
+        font-size: 80px;
+    }
+
+    .openbtn {
+        display: flex;
+        flex-direction: row;
+        font-size: 35px;
+        padding: 20px 0px;
+        max-height: 10vh;
+        background-color: brown;
+        color: whitesmoke;
+        align-items: center;
+    }
+
+    .openbtn:hover {
+        background-color: brown;
+        color: whitesmoke;
+    }
+
+    .openbtn2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        font-size: 35px;
+        cursor: pointer;
+        padding: 20px 0px;
+        height: 10vh;
+        margin-top: 0rem;
+        background-color: black;
+        color: whitesmoke;
+        width: 100.2vw;
+        align-items: center;
+    }
+
+    .openbtn2:hover {
+        background-color: brown;
+        color: whitesmoke;
+    }
+
+    .login {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: rgb(200, 25, 50);
+        max-height: 100vh;
+        align-items: center;
+    }
+
+    .register {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: rgb(200, 25, 50);
+        padding-right: 5rem;
+        min-height: 100vh;
+        margin-top: 0rem;
+        align-items: center;
+    }
+
+    .login .logos img {
+        width: auto;
+        max-height: 70vh;
+        margin-top: 1rem;
+    }
+
+    .register .logos img {
+        width: auto;
+        max-height: 60vh;
+        margin-top: 2rem;
+    }
+
+    .reject2 {
+        margin-left: 0rem;
+    }
+
+    .reject3 {
+        margin-left: 0rem;
+        margin-bottom: 10px;
+    }
+
+    .reject4 {
+        margin-left: 30%;
+    }
+
+    .formulaire {
+        background-color: rgb(200, 25, 50);
+        padding: 2rem;
+        border-radius: 5rem;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    /* *******Accueil*********** */
+    .mangas {
+        margin-top: 3rem;
+    }
+
+    .mangas img {
+        width: auto;
+        max-height: 25vh;
+    }
+
+    .animes {
+        margin-top: 3rem;
+    }
+
+    .animes img {
+        width: auto;
+        max-height: 30vh;
+    }
+
+    .details2 {
+        background-color: black;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 10px;
+        justify-items: center;
+        padding: 1rem 0 1rem 0;
+    }
+
+    .details2 img {
+        max-width: 20vw;
+        height: auto;
+    }
+
+    .detail {
+        flex: 1 0 0%;
+        display: grid;
+        align-content: center;
+    }
+
+    .detail img {
+        width: auto;
+        max-height: 60vh;
+    }
+
+    .mangasdetail {
+        margin-top: 3rem;
+    }
+
+    .animesdetail {
+        margin-top: 3rem;
+    }
+
+    .bottom {
+        position: sticky;
+        margin: 0rem 6rem;
+    }
+
+    .bottom2 {
+        position: sticky;
+        margin: 10rem 8rem;
+    }
+
+    .cardWidth {
+        width: 40vw;
+        margin-left: 8rem;
+        overflow: hidden;
+    }
+
+    .cardWidth img {
+        height: auto;
+        width: 40vw;
+    }
+
+    .background {
+        background-image: url(../img/fanart.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .background .card-group>.card {
+        margin: 0rem 1rem 0rem 1rem;
+        width: 43vw;
+        font-size: 15px;
+    }
+
+    .cartes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        grid-gap: 10px;
+        justify-items: center;
+    }
+
+    .infosTypeCard {
+        position: absolute;
+        top: 0rem;
+        left: 19rem;
+        transition: all 0.5s ease-in-out;
+        visibility: hidden;
+        overflow: auto;
+    }
+
+    .present:hover .infosTypeCard {
+        top: 0rem;
+        left: 8rem;
+        visibility: visible;
+        background-color: rgba(5, 5, 5, 0.559);
+        color: white;
+        height: 100%;
+        width: 55%;
+        text-align: center;
+        overflow: auto;
+    }
+
+    .present {
+        position: relative;
+        overflow: hidden;
+        width: 72vw;
+    }
+
+    .carte img {
+        max-width: 20vw;
+        height: auto;
+    }
+
+    .titre {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .titre .card-title {
+        font-size: 40px;
+    }
+
+    .type2 {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .type2 .card-text {
+        font-size: 35px;
+    }
+
+    .niveau {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .niveau .card-text {
+        font-size: 35px;
+    }
+
+    .element {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .element .card-text {
+        font-size: 35px;
+    }
+
+    .delete {
+        border: 3px solid brown;
+        background-color: brown;
+        color: wheat;
+        text-align: center;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .separate {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .presentationcartes {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .justify {
+        text-align: justify;
+        width: 90vw;
+    }
+
+    .entertothecard {
+        padding: 3rem;
+        background: linear-gradient(to bottom right, brown, darkred);
+        color: rgba(252, 176, 69, 1);
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Navbar */
+
+    #logblock {
+        width: 35vw;
+        height: 20vh;
+        font-size: 20px;
+    }
+
+    nav ol {
+        padding: 1rem 0rem 1rem 1rem;
+    }
+
+    .bouton {
+        font-size: 25px;
+        min-width: 35vw;
+        text-align: center;
+        margin: 0rem 1rem 0rem 0rem;
+    }
+
+    .btn-danger {
+        color: #fff;
+        background-color: #7d3e12;
+        border-color: #7d3e12;
+    }
+
+    .dropdown-menu li {
+        width: 50vw;
+        font-size: 25px;
+    }
+
+    .primetitle {
+        background-color: black;
+        width: 100%;
+        min-height: 10vh;
+        margin-top: 0;
+    }
+
+    /* Détail user */
+    .user {
+        max-width: 60vw;
+        height: auto;
+        margin-left: 15rem;
+    }
+
+    .user .card-title {
+        font-size: 30px;
+    }
+
+    .user .card-text {
+        font-size: 30px;
+    }
+
+    .user .card-body a {
+        font-size: 30px;
+    }
+
+    .user img {
+        width: auto;
+        max-height: 65vh;
+    }
+
+    .list-group-flush>.list-group-item {
+        width: 60vw;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    /* ******************************** Forum ******************* */
+    /* Publications */
+
+    .publication {
+        width: 80vw;
+        margin: 4rem 1rem 0rem 5rem;
+    }
+
+    .publication .card-body {
+        width: auto;
+    }
+
+    .publication .card-text {
+        width: 76vw;
+        font-size: 24px;
+    }
+
+    .addpubli {
+        min-height: 20vh;
+        margin: 1rem 0rem 0rem 3rem;
+    }
+
+    .publicom {
+        padding-top: 1rem;
+    }
+
+    /* Commentaire */
+
+    .publicationComment {
+        width: 90vw;
+        margin: 0rem 1rem 0rem 3rem;
+    }
+
+    .publicationComment .card-body {
+        width: 88vw;
+    }
+
+    .publicationComment .card-text {
+        width: 79vw;
+        font-size: 25px;
+    }
+
+    .commentaire {
+        width: 50vw;
+        margin: 1rem 1rem 1rem 13rem;
+    }
+
+    .commentaire .card-body {
+        width: auto;
+    }
+
+    .commentaire .card-text {
+        width: 45vw;
+        font-size: 25px;
+    }
+
+    .commentaire .editdelete a {
+        width: 21vw;
+        font-size: 25px;
+    }
+
+    /* Commentaire de la réponse */
+
+    .commentaireReponse {
+        width: 60vw;
+        margin: 1rem 1rem 2rem 12rem;
+    }
+
+    .reponse2 {
+        width: 55vw;
+        height: auto;
+        margin: 0rem 0rem 0rem 13rem;
+    }
+
+    .reponse2 .card-body {
+        width: 10vw;
+    }
+
+    .reponse2 .card-text {
+        width: 40vw;
+        font-size: 25px;
+    }
+
+    .reponse2 .editdelete {
+        width: 40vw;
+        margin: 1rem 0 2rem 3rem;
+    }
+
+    .reponse2 .editdelete a {
+        font-size: 25px;
+    }
+
+    .reponse {
+        width: 90vw;
+        margin: 0rem 0rem 0rem 3rem
+    }
+
+    .reponse .card-body {
+        width: 60vw;
+        margin-top: 3rem;
+    }
+
+    .reponse .card-text {
+        width: 59vw;
+        font-size: 20px;
+    }
+
+    .reponse .editdelete {
+        width: 40vw;
+        margin: 1rem 0 0 6rem;
+    }
+
+    .reponse .editdelete a {
+        font-size: 25px;
+    }
+
+    /* Détail de la carte */
+
+    .conteneur {
+        display: flex;
+        padding: 0rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .conteneur img {
+        margin: 0;
+    }
+
+    .card-data-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(35%, 1fr));
+        grid-gap: 10px;
+        justify-items: center;
+        align-items: center;
+    }
+
+    ul.card-data-info li {
+        list-style: none;
+        height: auto;
+        min-width: 10vw;
+        background: #7d3e12;
+        border-radius: 30px;
+        color: #fff;
+        margin: 0.5rem 0px 0px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        width: 30vw;
+        margin-left: 18rem;
+        text-align: center;
+    }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (device-width :1180px) {
+
+    .reject2 {
+        margin-left: 0rem;
+    }
+
+    .reject3 {
+        margin-left: 0rem;
+        margin-bottom: 10px;
+    }
+
+    .reject4 {
+        margin-left: 30%;
+    }
+
+    .login {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: rgb(200, 25, 50);
+        min-height: 100vh;
+        align-items: center;
+    }
+
+    .register {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(200, 25, 50);
+        padding-right: 0rem;
+        min-height: 100vh;
+        margin-top: 0rem;
+        align-items: center;
+    }
+
+    .login .logos img {
+        width: auto;
+        max-height: 50vh;
+        margin-top: 2rem;
+    }
+
+    .register .logos img {
+        width: auto;
+        max-height: 40vh;
+        margin-top: 1rem;
+    }
+
+    .formulaire {
+        background-color: rgb(200, 25, 50);
+        padding: 2rem;
+        border-radius: 5rem;
+        width: 70vw;
+    }
+
+    .addpubli {
+        padding: 2rem;
+        border-radius: 5rem;
+        width: 100vw;
+        height: 35vh;
+        background-color: rgb(200, 25, 50);
+        margin: 1rem 0rem 0rem 5.5rem;
+    }
+
+    .contact {
+        background-color: brown;
+        padding: 0rem;
+        margin: 0rem 0rem 0rem 4rem;
+        border-radius: 50px;
+        width: 90vw;
+    }
+
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        width: 30vw;
+        margin-left: 34rem;
+        text-align: center;
+    }
+
+    fieldset input {
+        border-radius: 20px;
+    }
+
+    fieldset textarea {
+        border-radius: 20px;
+    }
+
+    .publication {
+        width: 40vw;
+        margin: 3rem 1rem 0rem 22rem;
+    }
+
+    /* Commentaire */
+    .publicationComment {
+        width: 40vw;
+        margin: 1rem 1rem 0rem 22rem;
+    }
+
+    .commentaire {
+        width: 35vw;
+        margin: 1rem 1rem 1rem 25rem;
+    }
+
+    /* Réponse du commentaire */
+    .commentaireReponse {
+        width: 45vw;
+        margin: 1rem 1rem 2rem 20rem;
+    }
+
+    .reponse2 {
+        width: 35vw;
+        margin: 0rem 0rem 0rem 24rem;
+        min-height: 30vh;
+    }
+
+    .reponse2 .card-text {
+        margin-right: 0rem;
+        width: 18vw;
+    }
+
+    .publicationComment {
+        width: 90vw;
+        margin: 0rem 1rem 0rem 3rem;
+    }
+
+    .publicationComment .card-body {
+        width: 40vw;
+    }
+
+    .publicationComment .card-text {
+        width: 38vw;
+        font-size: 25px;
+    }
+
+    .commentaire {
+        width: 50vw;
+        margin: 1rem 1rem 1rem 13rem;
+    }
+
+    .commentaire .card-body {
+        width: auto;
+    }
+
+    .commentaire .card-text {
+        width: 33vw;
+        font-size: 25px;
+    }
+
+    .commentaire .editdelete a {
+        width: 15vw;
+        font-size: 25px;
+    }
+
+    .dropdown-menu li {
+        list-style: none;
+        padding: 1rem;
+        min-width: 20vw;
+        text-align: center;
+        color: white;
+    }
+
+    /* Commentaire de la réponse */
+
+    .commentaireReponse {
+        width: 60vw;
+        margin: 1rem 1rem 2rem 12rem;
+    }
+
+    .reponse2 {
+        width: 55vw;
+        height: auto;
+        margin: 0rem 0rem 0rem 13rem;
+    }
+
+    .reponse2 .card-body {
+        width: 10vw;
+    }
+
+    .reponse2 .card-text {
+        width: 28vw;
+        font-size: 25px;
+    }
+
+    .reponse2 .editdelete {
+        width: 40vw;
+        margin: 1rem 0 2rem 12rem;
+    }
+
+    .reponse2 .editdelete a {
+        font-size: 25px;
+    }
+
+    .reponse {
+        width: 90vw;
+        margin: 0rem 0rem 0rem 3rem
+    }
+
+    .reponse .card-body {
+        width: 60vw;
+        margin-top: 3rem;
+    }
+
+    .reponse .card-text {
+        width: 59vw;
+        font-size: 20px;
+    }
+
+    .reponse .editdelete {
+        width: 40vw;
+        margin: 1rem 0 0 6rem;
+    }
+
+    .reponse .editdelete a {
+        font-size: 25px;
+    }
+
+    .bottom {
+        position: sticky;
+        margin: 0rem 30rem;
+    }
+
+    .bottom2 {
+        position: sticky;
+        margin: 10rem 26rem;
+    }
+
+    .cardWidth {
+        width: 30vw;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .cardWidth img {
+        height: auto;
+        width: 30vw;
+    }
+
+    .cartes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        grid-gap: 10px;
+        justify-items: center;
+    }
+
+    .infosTypeCard {
+        position: absolute;
+        top: 0rem;
+        left: 19rem;
+        transition: all 0.5s ease-in-out;
+        visibility: hidden;
+        overflow: auto;
+    }
+
+    .present:hover .infosTypeCard {
+        top: 0rem;
+        left: 0rem;
+        visibility: visible;
+        background-color: rgba(5, 5, 5, 0.559);
+        color: white;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        overflow: auto;
+    }
+
+    .present {
+        position: relative;
+        overflow: hidden;
+        width: 30vw;
+    }
+
+    .present2:hover .infosTypeCard {
+        top: 0rem;
+        left: 0rem;
+        visibility: visible;
+        background-color: rgba(5, 5, 5, 0.559);
+        color: white;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+
+    .present2 {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .carte img {
+        max-width: 20vw;
+        height: auto;
+    }
+
+    .titre {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .titre .card-title {
+        font-size: 18px;
+    }
+
+    .type2 {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .desc {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .niveau {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .element {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .delete {
+        border: 3px solid brown;
+        background-color: brown;
+        color: wheat;
+        text-align: center;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .separate {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .presentationcartes {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .justify {
+        text-align: justify;
+        width: 90vw;
+    }
+
+    .entertothecard {
+        padding: 3rem;
+        background: linear-gradient(to bottom right, brown, darkred);
+        color: rgba(252, 176, 69, 1);
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .main3 {
+        max-height: 10vh;
+        margin: 0 0 4rem 0rem;
+    }
+
+    .main2 {
+        display: none;
+    }
+
+    .bouton {
+        font-size: 21px;
+        min-width: 21vw;
+        text-align: center;
+        margin: 0rem 2rem 0rem 0rem;
+    }
+
+    /* Accueil */
+    .primetitle {
+        background-color: black;
+        width: 100%;
+        min-height: 10vh;
+        margin-top: 1rem;
+    }
+
+    /* *******Accueil*********** */
+    .mangas {
+        margin-top: 3rem;
+    }
+
+    .mangas img {
+        width: auto;
+        max-height: 25vh;
+    }
+
+    .animes {
+        margin-top: 3rem;
+    }
+
+    .animes img {
+        width: auto;
+        max-height: 30vh;
+    }
+
+    .detail {
+        flex: 1 0 0%;
+        display: grid;
+        align-content: center;
+    }
+
+    .detail img {
+        width: auto;
+        max-height: 60vh;
+    }
+
+    .mangasdetail {
+        margin-top: 3rem;
+    }
+
+    .animesdetail {
+        margin-top: 3rem;
+    }
+
+    /* Détail User */
+    .user {
+        max-width: 25vw;
+        height: auto;
+        margin-left: 30rem;
+    }
+
+    .list-group-flush>.list-group-item {
+        width: 24.8vw;
+    }
+
+    .users {
+        font-size: 20px;
+        font-weight: bolder;
+        margin-top: 5rem;
+    }
+
+    /* Forum */
+    /* Publication */
+
+    .publication {
+        width: 40vw;
+        margin: 3rem 1rem 0rem 22rem;
+    }
+
+    /* Commentaire */
+    .publicationComment {
+        width: 40vw;
+        margin: 1rem 1rem 0rem 22rem;
+    }
+
+    .commentaire {
+        width: 35vw;
+        margin: 1rem 1rem 1rem 25rem;
+    }
+
+    /* Réponse du commentaire */
+    .commentaireReponse {
+        width: 45vw;
+        margin: 1rem 1rem 2rem 20rem;
+    }
+
+    .reponse2 {
+        width: 35vw;
+        margin: 0rem 0rem 0rem 24rem;
+        min-height: 30vh;
+    }
+
+    .reponse2 .card-text {
+        margin-right: 0rem;
+        width: 28vw;
+    }
+
+    /* Formats de duel */
+    .groupe .card {
+        width: auto;
+        height: auto;
+        font-size: 18px;
+    }
+
+    .groupe .card-body {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-group>.card {
+        margin: 1rem 1rem;
+    }
+
+    /* Détail Cartes */
+    .card-data-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(35%, 1fr));
+        grid-gap: 10px;
+        justify-items: center;
+        align-items: center;
+    }
+
+    ul.card-data-info li {
+        list-style: none;
+        height: auto;
+        min-width: 10vw;
+        background: #7d3e12;
+        border-radius: 30px;
+        color: #fff;
+        margin: 0.5rem 0px 0px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
