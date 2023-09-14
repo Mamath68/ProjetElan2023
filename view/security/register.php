@@ -39,6 +39,6 @@
     </div>
 </div>
 <?php
-$title = "S'enregistrer";
+$title = "Sich Einschreiben";
 
 ?>

@@ -27,7 +27,7 @@ const logBottomElement = document.querySelector(".logbottom");
 const logMessageElement = document.getElementById("log-message");
 
 const logMessageDefault = logMessageElement.innerText;
-const logMessages = ["Mon profil", "Liste des utilisateurs", "Déconnexion"];
+const logMessages = ["Mein profil", "Benutzerliste", "Ausloggen"];
 
 
 // pour chaque icône qui peut être survolée

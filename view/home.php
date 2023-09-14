@@ -5,12 +5,12 @@ if (Core\Session::isAdmin()) {
 
     <div class="main2">
         <button class="openbtn" onclick="openNav()">☰</button>
-        <h1 class="p-3 primetitle text-light">Bienvenue
+        <h1 class="p-3 primetitle text-light">Willkommen
             <?= Core\Session::getUser()->getPseudo() ?>
         </h1>
     </div>
     <div class="main3">
-        <h1 class="p-3 primetitle text-light">Bienvenue
+        <h1 class="p-3 primetitle text-light">Willkommen
             <?= Core\Session::getUser()->getPseudo() ?>
         </h1>
     </div>
@@ -59,13 +59,13 @@ if (Core\Session::isAdmin()) {
 } else if (Core\Session::getUser()) {
     ?>
         <div class="main3">
-            <h1 class="p-3 primetitle text-light">Bienvenue
+            <h1 class="p-3 primetitle text-light">Willkommen
             <?= Core\Session::getUser()->getPseudo() ?>
             </h1>
         </div>
         <div class="main2">
             <button class="openbtn" onclick="openNav()">☰</button>
-            <h1 class="p-3 primetitle text-light">Bienvenue
+            <h1 class="p-3 primetitle text-light">Willkommen
             <?= Core\Session::getUser()->getPseudo() ?>
             </h1>
         </div>
@@ -142,13 +142,13 @@ if (Core\Session::isAdmin()) {
 } else {
     ?>
         <div class="main3">
-            <h1 class="p-3 primetitle text-light">Bienvenue cher Duelliste, <br> <strong>C'est l'heure du Duduelle!</strong><br>
-                Mais d'abord, il faut se connecter</h1>
+            <h1 class="p-3 primetitle text-light">Willkommen, lieber Duellant, <br> <strong>Es ist Zeit für das Duell!</strong><br>
+                Aber zuerst musst du dich anmelden</h1>
         </div>
         <div class="main2">
             <button class="openbtn" onclick="openNav()">☰</button>
-            <h1 class="p-3 primetitle text-light">Bienvenue cher Duelliste, <br> <strong>C'est l'heure du Duduelle!</strong><br>
-                Mais d'abord, il faut se connecter</h1>
+            <h1 class="p-3 primetitle text-light">Willkommen, lieber Duellant, <br> <strong>Es ist Zeit für das Duell!</strong><br>
+                Aber zuerst musst du dich anmelden</h1>
         </div>
 
         <div class="bottom2">
@@ -220,5 +220,5 @@ if (Core\Session::isAdmin()) {
     </div>
     <?php
 }
-$title = "Projet Yu-Gi-Oh!";
+$title = "Yu-Gi-Oh! Projekt";
 ?>

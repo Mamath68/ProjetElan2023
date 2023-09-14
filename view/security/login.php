@@ -29,6 +29,6 @@
     </div>
 </div>
 <?php
-$title = "Se Connecter";
+$title = "Sich Einloggen";
 
 ?>
