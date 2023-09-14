@@ -17,7 +17,7 @@ class SecurityController extends AbstractController implements ControllerInterfa
 {
     public function index()
     {
-        $cardsEndpoint = "https://db.ygoprodeck.com/api/v7/cardinfo.php";
+        $cardsEndpoint = "https://db.ygoprodeck.com/api/v7/cardinfo.php?language=de";
 
         // Send GET request to the API
         $cardsResponse = file_get_contents($cardsEndpoint);

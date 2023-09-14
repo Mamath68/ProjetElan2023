@@ -18,7 +18,7 @@ class SocialNetworkController extends AbstractController implements ControllerIn
 
     public function index()
     {
-        $cardsEndpoint = "https://db.ygoprodeck.com/api/v7/cardinfo.php";
+        $cardsEndpoint = "https://db.ygoprodeck.com/api/v7/cardinfo.php?language=de";
 
         // Send GET request to the API
         $cardsResponse = file_get_contents($cardsEndpoint);
@@ -46,13 +46,11 @@ class SocialNetworkController extends AbstractController implements ControllerIn
                     // var_dump($randomCard),
                 ]
             ];
-
         } else {
 
             // Handle error if request fails
 
             echo "API request failed.";
-
         }
     }
     public function findPublicationsByUsers($id)
@@ -86,7 +84,6 @@ class SocialNetworkController extends AbstractController implements ControllerIn
                 );
             }
             $this->redirectTo("socialNetwork", "findAllPublications");
-
         }
         return
             [
@@ -130,8 +127,7 @@ class SocialNetworkController extends AbstractController implements ControllerIn
                             "publication_id" => $id,
                         ]
                     )
-                )
-                    ;
+                );
             }
             $this->redirectTo("socialNetwork", "viewCommentByPublication", $id);
         }
@@ -177,8 +173,7 @@ class SocialNetworkController extends AbstractController implements ControllerIn
                             "comment_id" => $id,
                         ]
                     )
-                )
-                    ;
+                );
             }
             $this->redirectTo("socialNetwork", "viewCommentsByComment", $id);
         }
@@ -217,7 +212,6 @@ class SocialNetworkController extends AbstractController implements ControllerIn
         $reponse = $id;
 
         header('Location:index.php?ctrl=socialnetwork&action=findAllPublications');
-
     }
     public function deleteComment($id)
     {
@@ -231,7 +225,6 @@ class SocialNetworkController extends AbstractController implements ControllerIn
         $reponse = $id;
 
         header('Location:index.php?ctrl=socialnetwork&action=viewCommentsByComment&id=' . $id . '');
-
     }
     public function deleteAnswer($id)
     {
@@ -245,7 +238,5 @@ class SocialNetworkController extends AbstractController implements ControllerIn
         $reponseManager->delete($id);
 
         header('Location:index.php?ctrl=socialnetwork&action=viewCommentsByComment&id=' . $id . '');
-
     }
-
 }

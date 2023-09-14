@@ -28,7 +28,97 @@
     <div>
         <?php
         if (Core\Session::isAdmin()) {
-            ?>
+        ?>
+            <header>
+                <div id="logblock">
+                    <img src='public/img/<?= Core\Session::getUser()->getAvatar() ?>' alt='logo'>
+                    <div id="messagehidden">
+                        <p id="log-message">Willkommen
+                            <?= Core\Session::getUser()->getPseudo() ?>
+                        </p>
+                    </div>
+                    <div class="logbottom">
+                        <a href="index.php?ctrl=home&action=detailUser">
+                            <i class="fa-solid fa-user icons"></i>
+                        </a>
+                        <a href="index.php?ctrl=home&action=users">
+                            <i class="fa-solid fa-users icons"></i></a>
+                        <a href="index.php?ctrl=security&action=logout"><i class="fa-solid fa-power-off icons"></i></a>
+                    </div>
+                </div>
+                <nav>
+                    <ol>
+                        <li>
+                            <a class="bouton" href="index.php?ctrl=home&action=index" role="button">Home</a>
+                        </li>
+                        <li>
+                            <a class="bouton" href="index.php?ctrl=socialnetwork&action=findAllPublications" role="button">Blog</a>
+                        </li>
+                        <li>
+                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Das KartenSpiel </button>
+                            <ul class="dropdown-menu Yugioh">
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">KartenVorstellung</a>
+                                </li>
+                                <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
+                                        role="button">Recherches</a></li> -->
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel" role="button">Die Duel formatten</a></li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck" role="button">Zu den Decks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Das Yu-Gi-Oh! Universum
+                            </button>
+                            <ul class="dropdown-menu Yugioh">
+                                <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a>
+                                </li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Anime</a></li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <div id="mySidebar" class="sidebar">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <a href="index.php?ctrl=home&action=index">Home</a>
+                        <a href="index.php?ctrl=socialnetwork&action=findAllPublications">Blog</a>
+                        <li>
+                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Das KartenSpiel </button>
+                            <ul class="dropdown-menu Yugioh">
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">KartenVorstellung</a>
+                                </li>
+                                <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
+                                        role="button">Recherches</a></li> -->
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel" role="button">Die Duel formatten</a></li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck" role="button">Zu den Decks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Das Yu-Gi-Oh! Universum
+                            </button>
+                            <ul class="dropdown-menu Yugioh">
+                                <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a>
+                                </li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Anime</a></li>
+                            </ul>
+                        </li>
+                    </div>
+                </nav>
+            </header>
+
+            <main>
+                <?= $contenu ?>
+                <?php include_once("comment_button.php") ?>
+            </main>
+            <a href="#" class="go_top">
+                <i class="fa-solid fa-arrow-up"></i>
+            </a>
+        <?php
+
+        } else if (Core\Session::getUser()) { ?>
             <header>
                 <div id="logblock">
                     <img src='public/img/<?= Core\Session::getUser()->getAvatar() ?>' alt='logo'>
@@ -52,31 +142,26 @@
                             <a class="bouton" href="index.php?ctrl=home&action=index" role="button">Accueil</a>
                         </li>
                         <li>
-                            <a class="bouton" href="index.php?ctrl=socialnetwork&action=findAllPublications"
-                                role="button">Blog</a>
+                            <a class="bouton" href="index.php?ctrl=socialnetwork&action=findAllPublications" role="button">Blog</a>
                         </li>
                         <li>
-                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Jeu de carte </button>
                             <ul class="dropdown-menu Yugioh">
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">Presentation des
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">Présentation des
                                         Cartes</a>
                                 </li>
                                 <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
-                                        role="button">Recherches</a></li> -->
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel"
-                                        role="button">Formats
+                                            role="button">Recherches</a></li> -->
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel" role="button">Formats
                                         de
                                         duels</a></li>
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck"
-                                        role="button">Deck</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck" role="button">Deck</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 L'Univers Yu-Gi-Oh!
                             </button>
                             <ul class="dropdown-menu Yugioh">
@@ -91,8 +176,7 @@
                         <a href="index.php?ctrl=home&action=index">Accueil</a>
                         <a href="index.php?ctrl=socialnetwork&action=findAllPublications">Blog</a>
                         <li>
-                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Jeu de carte </button>
                             <ul class="dropdown-menu Yugioh">
                                 <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">Presentation des
@@ -100,18 +184,15 @@
                                 </li>
                                 <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
                                         role="button">Recherches</a></li> -->
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel"
-                                        role="button">Formats
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel" role="button">Formats
                                         de
                                         duels</a></li>
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck"
-                                        role="button">Deck</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck" role="button">Deck</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 L'Univers Yu-Gi-Oh!
                             </button>
                             <ul class="dropdown-menu Yugioh">
@@ -126,224 +207,105 @@
 
             <main>
                 <?= $contenu ?>
-                <?php include_once("comment_button.php") ?>
             </main>
-            <a href="#" class="go_top">
-                <i class="fa-solid fa-arrow-up"></i>
-            </a>
-            <?php
 
-        } else if (Core\Session::getUser()) { ?>
-                <header>
-                    <div id="logblock">
-                        <img src='public/img/<?= Core\Session::getUser()->getAvatar() ?>' alt='logo'>
-                        <div id="messagehidden">
-                            <p id="log-message">Bienvenue
-                            <?= Core\Session::getUser()->getPseudo() ?>
-                            </p>
-                        </div>
-                        <div class="logbottom">
-                            <a href="index.php?ctrl=home&action=detailUser">
-                                <i class="fa-solid fa-user icons"></i>
-                            </a>
-                            <a href="index.php?ctrl=home&action=users">
-                                <i class="fa-solid fa-users icons"></i></a>
-                            <a href="index.php?ctrl=security&action=logout"><i class="fa-solid fa-power-off icons"></i></a>
-                        </div>
-                    </div>
-                    <nav>
-                        <ol>
-                            <li>
-                                <a class="bouton" href="index.php?ctrl=home&action=index" role="button">Accueil</a>
-                            </li>
-                            <li>
-                                <a class="bouton" href="index.php?ctrl=socialnetwork&action=findAllPublications"
-                                    role="button">Blog</a>
-                            </li>
-                            <li>
-                                <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Jeu de carte </button>
-                                <ul class="dropdown-menu Yugioh">
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">Présentation des
-                                            Cartes</a>
-                                    </li>
-                                    <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
-                                            role="button">Recherches</a></li> -->
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel"
-                                            role="button">Formats
-                                            de
-                                            duels</a></li>
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck"
-                                            role="button">Deck</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    L'Univers Yu-Gi-Oh!
-                                </button>
-                                <ul class="dropdown-menu Yugioh">
-                                    <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Animé</a></li>
-                                </ul>
-                            </li>
-                        </ol>
-                        <div id="mySidebar" class="sidebar">
-                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                            <a href="index.php?ctrl=home&action=index">Accueil</a>
-                            <a href="index.php?ctrl=socialnetwork&action=findAllPublications">Blog</a>
-                            <li>
-                                <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Jeu de carte </button>
-                                <ul class="dropdown-menu Yugioh">
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">Presentation des
-                                            Cartes</a>
-                                    </li>
-                                    <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
-                                        role="button">Recherches</a></li> -->
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel"
-                                            role="button">Formats
-                                            de
-                                            duels</a></li>
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck"
-                                            role="button">Deck</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    L'Univers Yu-Gi-Oh!
-                                </button>
-                                <ul class="dropdown-menu Yugioh">
-                                    <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Animé</a></li>
-                                </ul>
-                            </li>
-                        </div>
-                    </nav>
-                </header>
-
-                <main>
-                <?= $contenu ?>
-                </main>
-
-            <?php
+        <?php
         } else {
-            ?>
-                <header>
-                    <div class="merge">
+        ?>
+            <header>
+                <div class="merge">
 
-                    </div>
-                    <nav>
-                        <ol>
-                            <li>
-                                <a class="bouton" href="index.php?ctrl=home&action=index" role="button">Accueil</a>
-                            </li>
-                            <li> <button type="button" class="bouton btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Connectiques
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li class="bg-success"><a class="dropdown-item"
-                                            href="index.php?ctrl=security&action=loginForm">Se Connecter</a></li>
-                                    <li class="bg-danger"><a class="dropdown-item"
-                                            href="index.php?ctrl=security&action=registerForm">Pas de Compte,
-                                            S'enregistrer</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Jeu de carte </button>
-                                <ul class="dropdown-menu Yugioh">
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">Présentation des
-                                            Cartes</a>
-                                    </li>
-                                    <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
+                </div>
+                <nav>
+                    <ol>
+                        <li>
+                            <a class="bouton" href="index.php?ctrl=home&action=index" role="button">Accueil</a>
+                        </li>
+                        <li> <button type="button" class="bouton btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Connectiques
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="bg-success"><a class="dropdown-item" href="index.php?ctrl=security&action=loginForm">Se Connecter</a></li>
+                                <li class="bg-danger"><a class="dropdown-item" href="index.php?ctrl=security&action=registerForm">Pas de Compte,
+                                        S'enregistrer</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Jeu de carte </button>
+                            <ul class="dropdown-menu Yugioh">
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">Présentation des
+                                        Cartes</a>
+                                </li>
+                                <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
                                             role="button">Recherches</a></li> -->
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel"
-                                            role="button">Formats
-                                            de
-                                            duels</a></li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel" role="button">Formats
+                                        de
+                                        duels</a></li>
 
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck"
-                                            role="button">Deck</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    L'Univers Yu-Gi-Oh!
-                                </button>
-                                <ul class="dropdown-menu Yugioh">
-                                    <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Animé</a></li>
-                                </ul>
-                            </li>
-                        </ol>
-                        <div id="mySidebar" class="sidebar">
-                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                            <a href="index.php?ctrl=home&action=index">Accueil</a>
-                            <li> <button type="button" class="bouton btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Connectiques
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li class="bg-success"><a class="dropdown-item"
-                                            href="index.php?ctrl=security&action=loginForm">Se Connecter</a></li>
-                                    <li class="bg-danger"><a class="dropdown-item"
-                                            href="index.php?ctrl=security&action=registerForm">Pas de Compte,
-                                            S'enregistrer</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Jeu de carte </button>
-                                <ul class="dropdown-menu Yugioh">
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">Presentation des
-                                            Cartes</a>
-                                    </li>
-                                    <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck" role="button">Deck</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                L'Univers Yu-Gi-Oh!
+                            </button>
+                            <ul class="dropdown-menu Yugioh">
+                                <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a>
+                                </li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Animé</a></li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <div id="mySidebar" class="sidebar">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <a href="index.php?ctrl=home&action=index">Accueil</a>
+                        <li> <button type="button" class="bouton btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Connectiques
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="bg-success"><a class="dropdown-item" href="index.php?ctrl=security&action=loginForm">Se Connecter</a></li>
+                                <li class="bg-danger"><a class="dropdown-item" href="index.php?ctrl=security&action=registerForm">Pas de Compte,
+                                        S'enregistrer</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Jeu de carte </button>
+                            <ul class="dropdown-menu Yugioh">
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">Presentation des
+                                        Cartes</a>
+                                </li>
+                                <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
                                         role="button">Recherches</a></li> -->
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel"
-                                            role="button">Formats
-                                            de
-                                            duels</a></li>
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck"
-                                            role="button">Deck</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    L'Univers Yu-Gi-Oh!
-                                </button>
-                                <ul class="dropdown-menu Yugioh">
-                                    <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Animé</a></li>
-                                </ul>
-                            </li>
-                        </div>
-                    </nav>
-                </header>
-                <main>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel" role="button">Formats
+                                        de
+                                        duels</a></li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck" role="button">Deck</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                L'Univers Yu-Gi-Oh!
+                            </button>
+                            <ul class="dropdown-menu Yugioh">
+                                <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a>
+                                </li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Animé</a></li>
+                            </ul>
+                        </li>
+                    </div>
+                </nav>
+            </header>
+            <main>
                 <?= $contenu ?>
-                </main>
+            </main>
 
-            <?php
+        <?php
         } ?>
 
         <footer class="text-center text-white">
