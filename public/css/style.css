@@ -238,6 +238,7 @@ img:hover {
     width: 20vw;
     margin: 0;
     overflow: hidden;
+    height: 59vh;
 }
 
 .cardWidth img {
@@ -284,8 +285,8 @@ img:hover {
     visibility: visible;
     background-color: rgba(5, 5, 5, 0.559);
     color: white;
-    height: 57vh;
-    width: 20vw;
+    height: 100%;
+    width: 100%;
     text-align: center;
     top: 0;
 }
@@ -327,23 +328,6 @@ img:hover {
 .element {
     margin-top: 1rem;
     margin-bottom: 1rem;
-}
-
-.delete {
-    border: 3px solid brown;
-    background-color: brown;
-    color: wheat;
-    text-align: center;
-    height: 50vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.separate {
-    display: flex;
-    flex-direction: row;
 }
 
 .presentationcartes {
@@ -523,6 +507,60 @@ a.button:visited {
     line-height: 0;
 }
 
+.fonts {
+    font-size: 11px;
+}
+
+.social-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.social-list li {
+    padding: 10px;
+    color: #a52a2a;
+    font-size: 19px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+    grid-gap: 10px;
+}
+
+.buttons button {
+    border: 1px solid #8E24AA !important;
+    height: auto;
+    width: 20vw;
+}
+
+.buttons button:hover {
+    border: 1px solid #8E24AA !important;
+    height: auto;
+    width: 20vw;
+    text-decoration: underline;
+}
+
+.delete {
+    border: 3px solid brown;
+    background-color: brown;
+    color: wheat;
+    text-align: center;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.separate {
+    display: flex;
+    flex-direction: row;
+}
+
 #main {
     display: flex;
     flex-direction: row;
@@ -557,9 +595,6 @@ li {
 
 ul li {
     list-style: none;
-    margin-right: 0.1rem;
-    width: 30vw;
-    text-align: initial;
 }
 
 main {

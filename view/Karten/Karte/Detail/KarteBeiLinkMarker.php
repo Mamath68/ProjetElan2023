@@ -17,14 +17,14 @@ $linkmarkers = $result['linkmarkers']['data'];
     <div class="row">
         <?php
         foreach ($linkmarkers as $card) {
-            $counter2 = 0;
+            $counter = 0;
             foreach ($card['card_images'] as $img) {
-                if ($counter2 <= 0) {
+                if ($counter <= 0) {
                     ?>
                     <div class="col">
                         <div class="present2">
                             <figure class="carte">
-                                <img src="<?= $img['image_url'] ?>" alt="monstre_normal">
+                                <img src="<?= $img['image_url'] ?>" alt="<?=$card['type']?>">
                             </figure>
                             <div class="infosTypeCard">
                                 <div class="titre">
@@ -33,18 +33,18 @@ $linkmarkers = $result['linkmarkers']['data'];
                                     </h5>
                                 </div>
                                 <div class="element">
-                                    <p class="card-text"><a class="link-light" href="#">Ajouter à un Deck</a></p>
+                                    <p class="card-text"><a class="link-light" href="#">An Einem Deck Zufügen</a></p>
                                 </div>
                                 <div>
                                     <p class="card-text"><a class="link-light"
                                             href="index.php?ctrl=card&action=KarteBeiNammen&id=<?= $card['id'] ?>"
-                                            target="_blank">Détail</a></p>
+                                            target="_blank">Mehr Infos</a></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <?php
-                    $counter2++;
+                    $counter++;
                 }
             }
         }

@@ -62,8 +62,8 @@
                                 </li>
                                 <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
                                         role="button">Recherches</a></li> -->
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel" role="button">Die Duel formatten</a></li>
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck" role="button">Zu den Decks</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=DuelFormat" role="button">Die Duel formatten</a></li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=DeckListe" role="button">Zu den Decks</a>
                                 </li>
                             </ul>
                         </li>
@@ -90,8 +90,8 @@
                                 </li>
                                 <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
                                         role="button">Recherches</a></li> -->
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel" role="button">Die Duel formatten</a></li>
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck" role="button">Zu den Decks</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=DuelFormat" role="button">Die Duel formatten</a></li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=DeckListe" role="button">Zu den Decks</a>
                                 </li>
                             </ul>
                         </li>
@@ -152,8 +152,8 @@
                                 </li>
                                 <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
                                             role="button">Recherches</a></li> -->
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel" role="button">Die Duel formatten</a></li>
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck" role="button">Zu den Decks</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=DuelFormat" role="button">Die Duel formatten</a></li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=DeckListe" role="button">Zu den Decks</a>
                                 </li>
                             </ul>
                         </li>
@@ -180,8 +180,8 @@
                                 </li>
                                 <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
                                         role="button">Recherches</a></li> -->
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel" role="button">Die Duel formatten</a></li>
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=listDeck" role="button">Zu den Decks</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=DuelFormat" role="button">Die Duel formatten</a></li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=DeckListe" role="button">Zu den Decks</a>
                                 </li>
                             </ul>
                         </li>

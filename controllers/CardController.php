@@ -517,7 +517,7 @@ class CardController extends AbstractController implements ControllerInterface
     public function DeckFormular()
     {
         return [
-            "view" => VIEW_DIR . "cards/deck/BaueDeck.php",
+            "view" => VIEW_DIR . "Karten/deck/BaueDeck.php",
         ];
     }
     public function BaueDeck($nom)
@@ -611,7 +611,7 @@ class CardController extends AbstractController implements ControllerInterface
     //     // $deckManager = new DeckManager();
     //     return
     //         [
-    //             "view" => VIEW_DIR . "cards/deck/detailDeck.php",
+    //             "view" => VIEW_DIR . "Karten/deck/detailDeck.php",
     //             "data" =>
     //             [
     //                 "deck" => $deckManager->findOneById($deck->getId())
@@ -623,7 +623,7 @@ class CardController extends AbstractController implements ControllerInterface
         $deckManager = new DeckManager();
         return
             [
-                "view" => VIEW_DIR . "cards/deck/DeckListe.php",
+                "view" => VIEW_DIR . "Karten/deck/DeckListe.php",
                 "data" =>
                 [
                     "decks" => $deckManager->findAllDeck()
@@ -635,7 +635,7 @@ class CardController extends AbstractController implements ControllerInterface
         $deckManager = new DeckManager();
         return
             [
-                "view" => VIEW_DIR . "cards/deck/detailDeck.php",
+                "view" => VIEW_DIR . "Karten/deck/DeckInfos.php",
                 "data" =>
                 [
                     "decks" => $deckManager->findOneById($id),
@@ -648,7 +648,7 @@ class CardController extends AbstractController implements ControllerInterface
         $deckManager = new DeckManager();
         return
             [
-                "view" => VIEW_DIR . "cards/deck/note_Deck.php",
+                "view" => VIEW_DIR . "Karten/deck/note_Deck.php",
                 // "data" =>
                 // [
                 //     "deck" => $deckManager->findOneById($id)
@@ -660,7 +660,7 @@ class CardController extends AbstractController implements ControllerInterface
         $deckManager = new DeckManager();
         return
             [
-                "view" => VIEW_DIR . "cards/deck/comment_Deck.php",
+                "view" => VIEW_DIR . "Karten/deck/comment_Deck.php",
                 // "data" =>
                 // [
                 //     "deck" => $deckManager->findOneById($id)

@@ -16,13 +16,13 @@ foreach ($card as $carte) {
     <div class="conteneur">
         <div class="col detail">
             <?php
-            $counter2 = 0;
+            $counter = 0;
             foreach ($carte['card_images'] as $img) {
-                if ($counter2 <= 0) {
+                if ($counter <= 0) {
             ?>
                     <td><img src="<?= $img['image_url'] ?>" alt="<?= $carte['name'] ?>"></td>
             <?php
-                    $counter2++;
+                    $counter++;
                 }
             }
             ?>
@@ -156,7 +156,7 @@ foreach ($card as $carte) {
                     <?php
                     } else {
                     ?>
-                        <span>No Archetype</span>
+                        <span>Kein Archetype</span>
                     <?php
                     }
                     ?>

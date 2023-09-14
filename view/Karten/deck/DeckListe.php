@@ -21,14 +21,14 @@ if (Core\Session::isAdmin()) {
                 <p class="card-text">
                     <?= $deck->getDeckPresentation() ?>
                 </p>
-                <a href="index.php?ctrl=card&action=detailDeck&id=<?= $deck->getId() ?>" class="btn btn-primary">Détail du
+                <a href="index.php?ctrl=card&action=DeckInfos&id=<?= $deck->getId() ?>" class="btn btn-primary">Détail du
                     Deck</a>
             </div>
         </div>
         <?php
     }
     ?>
-    <button><a href="index.php?ctrl=card&action=creatDeckForm">Creer votre deck!</a></button>
+    <button><a href="index.php?ctrl=card&action=DeckFormular">Creer votre deck!</a></button>
     <?php
 } else if (Core\Session::getUser()) {
 
@@ -44,7 +44,7 @@ if (Core\Session::isAdmin()) {
                     <p class="card-text">
                     <?= $deck->getDeckPresentation() ?>
                     </p>
-                    <a href="index.php?ctrl=card&action=detailDeck&id=<?= $deck->getId() ?>" class="btn btn-primary">Détail du
+                    <a href="index.php?ctrl=card&action=DeckInfos&id=<?= $deck->getId() ?>" class="btn btn-primary">Détail du
                         Deck</a>
                 </div>
             </div>
@@ -52,7 +52,7 @@ if (Core\Session::isAdmin()) {
         <?php
     }
     ?>
-        <button><a href="index.php?ctrl=card&action=creatDeckForm">Creer votre deck!</a></button>
+        <button><a href="index.php?ctrl=card&action=DeckFormular">Creer votre deck!</a></button>
     <?php
 } else {
 
@@ -68,7 +68,7 @@ if (Core\Session::isAdmin()) {
                     <p class="card-text">
                     <?= $deck->getDeckPresentation() ?>
                     </p>
-                    <a href="index.php?ctrl=card&action=detailDeck&id=<?= $deck->getId() ?>" class="btn btn-primary">Détail du
+                    <a href="index.php?ctrl=card&action=DeckInfos&id=<?= $deck->getId() ?>" class="btn btn-primary">Détail du
                         Deck</a>
                 </div>
             </div>
