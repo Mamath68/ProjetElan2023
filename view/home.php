@@ -30,7 +30,7 @@ if (Core\Session::isAdmin()) {
                         <div class="infosTypeCard">
                             <div class="titre">
                                 <h5 class="card-title"><a class="link-light"
-                                        href="index.php?ctrl=card&action=detailcard&id=<?= $card['id'] ?>" target="_blank"> <?= $card['name'] ?></a>
+                                        href="index.php?ctrl=card&action=KarteBeiNammen&id=<?= $card['id'] ?>" target="_blank"> <?= $card['name'] ?></a>
                                 </h5>
                             </div>
                             <div class="type2">
@@ -85,7 +85,7 @@ if (Core\Session::isAdmin()) {
                         <div class="infosTypeCard">
                             <div class="titre">
                                 <h5 class="card-title"><a class="link-light"
-                                        href="index.php?ctrl=card&action=detailcard&id=<?= $card['id'] ?>" target="_blank"> <?= $card['name'] ?></a>
+                                        href="index.php?ctrl=card&action=KarteBeiNammen&id=<?= $card['id'] ?>" target="_blank"> <?= $card['name'] ?></a>
                                 </h5>
                             </div>
                             <div class="type2">
@@ -167,7 +167,7 @@ if (Core\Session::isAdmin()) {
                         <div class="infosTypeCard">
                             <div class="titre">
                                 <h5 class="card-title"><a class="link-light"
-                                        href="index.php?ctrl=card&action=detailcard&id=<?= $card['id'] ?>" target="_blank"> <?= $card['name'] ?></a>
+                                        href="index.php?ctrl=card&action=KarteBeiNammen&id=<?= $card['id'] ?>" target="_blank"> <?= $card['name'] ?></a>
                                 </h5>
                             </div>
                             <div class="type2">

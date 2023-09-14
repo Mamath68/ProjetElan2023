@@ -1,22 +1,21 @@
 <?php
-$type = $result['type']['data'];
+$element = $result['element']['data'];
 ?>
-
 <div class="main2">
     <button class="openbtn" onclick="openNav()">☰</button>
-    <h1 class="p-3 primetitle text-light">
-        <?= $_GET['type'] ?>
+    <h1 class="p-3 primetitle text-light">Monstres d'élément
+        <?= $_GET['attribute'] ?>
     </h1>
 </div>
 <div class="main3">
-    <h1 class="p-3 primetitle text-light">
-        <?= $_GET['type'] ?>
+    <h1 class="p-3 primetitle text-light">Monstres d'élément
+        <?= $_GET['attribute'] ?>
     </h1>
 </div>
 <div class="container text-center">
     <div class="row">
         <?php
-        foreach ($type as $card) {
+        foreach ($element as $card) {
             $counter2 = 0;
             foreach ($card['card_images'] as $img) {
                 if ($counter2 <= 0) {
@@ -37,7 +36,7 @@ $type = $result['type']['data'];
                                 </div>
                                 <div>
                                     <p class="card-text"><a class="link-light"
-                                            href="index.php?ctrl=card&action=detailCard&id=<?= $card['id'] ?>"
+                                            href="index.php?ctrl=card&action=KarteBeiNammen&id=<?= $card['id'] ?>"
                                             target="_blank">Détail</a></p>
                                 </div>
                             </div>
@@ -51,6 +50,7 @@ $type = $result['type']['data'];
         ?>
     </div>
 </div>
-<?php
 
-$title = $card['type'];
+
+<?php
+$title = "Element" . " " . $_GET['attribute'];

@@ -21,7 +21,7 @@ foreach ($mangas as $manga) {
   <div class="container text-center mangasdetail">
     <div class="row">
       <div class="col detail"><img src="<?= $manga->getImg() ?>" class="img-fluid"></div>
-      <div class="col detail">';
+      <div class="col detail">
         <div>De : Kazuki Takahashi</div>
       </div>
     </div>
@@ -29,7 +29,7 @@ foreach ($mangas as $manga) {
       <div class="col detail">
         <section>
           <div>
-            <h2>Synopsis2</h2>
+            <h2>Synopsis</h2>
           </div>
           <div>
             <?= $manga->getHistoire() ?>

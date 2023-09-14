@@ -38,7 +38,7 @@ $level = $result['level']['data'];
                                 </div>
                                 <div>
                                     <p class="card-text"><a class="link-light"
-                                            href="index.php?ctrl=card&action=detailCard&id=<?= $card['id'] ?>"
+                                            href="index.php?ctrl=card&action=KarteBeiNammen&id=<?= $card['id'] ?>"
                                             target="_blank">Détail</a></p>
                                 </div>
                             </div>

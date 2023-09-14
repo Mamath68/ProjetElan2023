@@ -51,14 +51,14 @@ class CardController extends AbstractController implements ControllerInterface
         }
     }
     /* **************** Cartes et présentation Cartes *************** */
-    public function presentation()
+    public function vorstellung()
     {
         return [
-            "view" => VIEW_DIR . "cards/cartes/presentation.php",
+            "view" => VIEW_DIR . "Karten/Karte/vorstellung.php",
         ];
     }
 
-    public function typeCard()
+    public function karteListe()
     {
         // API endpoint URL
 
@@ -167,7 +167,7 @@ class CardController extends AbstractController implements ControllerInterface
             $lien = json_decode($lien, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/typeCard.php",
+                "view" => VIEW_DIR . "Karten/Karte/karteListe.php",
                 // Monstres, Magie et Piège : Main Deck
                 'normal' => $normal,
                 'normal_tuner_monster' => $normal_tuner_monster,
@@ -207,70 +207,8 @@ class CardController extends AbstractController implements ControllerInterface
         }
     }
 
-    // public function searchCard()
-    // {
-    //     // API endpoint URL
-    //     $typeCard = filter_input(INPUT_GET, "type", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $archetypeCard = filter_input(INPUT_GET, "archetype", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $levelCard = filter_input(INPUT_GET, "level", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $raceCard = filter_input(INPUT_GET, "race", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $attributeCard = filter_input(INPUT_GET, "attribute", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $scaleCard = filter_input(INPUT_GET, "scale", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $linkValCard = filter_input(INPUT_GET, "linkval", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $nameCard = filter_input(INPUT_GET, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-    //     $type = "https://db.ygoprodeck.com/api/v7/cardinfo.php?language=de&type=$typeCard&sort=id";
-    //     $archetype = "https://db.ygoprodeck.com/api/v7/cardinfo.php?language=de&archetype=$archetypeCard&sort=id";
-    //     $level = "https://db.ygoprodeck.com/api/v7/cardinfo.php?language=de&level=$levelCard&sort=id";
-    //     $race = "https://db.ygoprodeck.com/api/v7/cardinfo.php?language=de&race=$raceCard&sort=id";
-    //     $attribute = "https://db.ygoprodeck.com/api/v7/cardinfo.php?language=de&attribute=$attributeCard&sort=id";
-    //     $scale = "https://db.ygoprodeck.com/api/v7/cardinfo.php?language=de&scale=$scaleCard&sort=id";
-    //     $linkval = "https://db.ygoprodeck.com/api/v7/cardinfo.php?language=de&link=$linkValCard&sort=id";
-    //     $name = "https://db.ygoprodeck.com/api/v7/cardinfo.php?language=de&name=$nameCard&sort=id";
-
-    //     // Send GET request to the API
-    //     // Monstres, Magie et Piège : Main Deck
-    //     $type = file_get_contents($type);
-    //     $archetype = file_get_contents($archetype);
-    //     $level = file_get_contents($level);
-    //     $race = file_get_contents($race);
-    //     $attribute = file_get_contents($attribute);
-    //     $scale = file_get_contents($scale);
-    //     $linkval = file_get_contents($linkval);
-    //     $name = file_get_contents($name);
-
-
-    //     // Handle the response
-    //     if ($type && $archetype && $level && $race && $attribute && $scale && $linkval && $name) {
-    //         // Convert JSON response to PHP array
-    //         $type = json_decode($type, true);
-    //         $archetype = json_decode($archetype, true);
-    //         $level = json_decode($level, true);
-    //         $race = json_decode($race, true);
-    //         $attribute = json_decode($attribute, true);
-    //         $scale = json_decode($scale, true);
-    //         $linkval = json_decode($linkval, true);
-    //         $name = json_decode($name, true);
-
-    //         return [
-    //             "view" => VIEW_DIR . "cards/cartes/searchCard.php",
-    //             'type' => $type,
-    //             'archetype' => $archetype,
-    //             'level' => $level,
-    //             'race' => $race,
-    //             'attribute' => $attribute,
-    //             'scale' => $scale,
-    //             'linkval' => $linkval,
-    //             'name' => $name,
-    //         ];
-
-    //     } else {
-    //         // Handle error if request fails
-    //         echo "API request failed.";
-    //     }
-    // }
-    /* ***************** Détail des cartes *********** */
-    public function detailCard()
+    /* ***************** KarteDetail *********** */
+    public function KarteBeiNammen()
     {
         $cardId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
 
@@ -287,7 +225,7 @@ class CardController extends AbstractController implements ControllerInterface
 
             return
                 [
-                    "view" => VIEW_DIR . "cards/cartes/details/detailCard.php",
+                    "view" => VIEW_DIR . "Karten/Karte/Detail/KarteBeiNammen.php",
                     'card' => $card,
                 ];
         } else {
@@ -295,7 +233,7 @@ class CardController extends AbstractController implements ControllerInterface
             echo "API request failed.";
         }
     }
-    public function detailType($typeCard)
+    public function KarteBeiType()
     {
         $typeCard = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
@@ -310,7 +248,7 @@ class CardController extends AbstractController implements ControllerInterface
             $type = json_decode($type, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailType.php",
+                "view" => VIEW_DIR . "Karten/Karte/Detail//KarteBeiType.php",
                 'type' => $type,
             ];
         } else {
@@ -318,7 +256,7 @@ class CardController extends AbstractController implements ControllerInterface
             echo "API request failed.";
         }
     }
-    public function detailElement($elementCard)
+    public function KarteBeiElement()
     {
 
         $elementCard = filter_input(INPUT_GET, 'attribute', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -336,7 +274,7 @@ class CardController extends AbstractController implements ControllerInterface
 
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailElement.php",
+                "view" => VIEW_DIR . "Karten/Karte/Detail//KarteBeiElement.php",
                 'element' => $element,
             ];
         } else {
@@ -344,7 +282,7 @@ class CardController extends AbstractController implements ControllerInterface
             echo "API request failed.";
         }
     }
-    public function detailRace($raceCard)
+    public function KarteBeiRace()
     {
         $raceCard = filter_input(INPUT_GET, 'race', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         // API endpoint URL
@@ -362,7 +300,7 @@ class CardController extends AbstractController implements ControllerInterface
             $race = json_decode($race, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailRace.php",
+                "view" => VIEW_DIR . "Karten/Karte/Detail/KarteBeiRace.php",
                 // Monstres, Magie et Piège : Main Deck
                 'race' => $race,
 
@@ -372,7 +310,7 @@ class CardController extends AbstractController implements ControllerInterface
             echo "API request failed.";
         }
     }
-    public function detailLevel($levelCard)
+    public function KarteBeiLevel()
     {
         $levelCard = filter_input(INPUT_GET, 'level', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
@@ -391,7 +329,7 @@ class CardController extends AbstractController implements ControllerInterface
             $level = json_decode($level, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailLevel.php",
+                "view" => VIEW_DIR . "Karten/Karte/Detail/KarteBeiLevel.php",
                 // Monstres, Magie et Piège : Main Deck
                 'level' => $level,
             ];
@@ -400,7 +338,7 @@ class CardController extends AbstractController implements ControllerInterface
             echo "API request failed.";
         }
     }
-    public function detailLinkVal($linkCard)
+    public function KarteBeiLinkValor()
     {
         $linkCard = filter_input(INPUT_GET, 'linkval', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
@@ -419,7 +357,7 @@ class CardController extends AbstractController implements ControllerInterface
             $linkval = json_decode($linkval, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailLinkVal.php",
+                "view" => VIEW_DIR . "Karten/Karte/Detail/KarteBeiLinkValor.php",
                 // Monstres, Magie et Piège : Main Deck
                 'linkval' => $linkval,
             ];
@@ -428,7 +366,7 @@ class CardController extends AbstractController implements ControllerInterface
             echo "API request failed.";
         }
     }
-    public function detailLinkMarkers($linkMarkCard)
+    public function KarteBeiLinkMarker()
     {
         $linkMarkers = filter_input(INPUT_GET, 'linkmarkers', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
@@ -447,7 +385,7 @@ class CardController extends AbstractController implements ControllerInterface
             $linkmarkers = json_decode($linkmarkers, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailLinkMarker.php",
+                "view" => VIEW_DIR . "Karten/Karte/Detail/KarteBeiLinkMarker.php",
                 // Monstres, Magie et Piège : Main Deck
                 'linkmarkers' => $linkmarkers,
             ];
@@ -456,7 +394,7 @@ class CardController extends AbstractController implements ControllerInterface
             echo "API request failed.";
         }
     }
-    public function detailScale($scaleCard)
+    public function KarteBeiScale()
     {
         $scaleCard = filter_input(INPUT_GET, 'scale', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
@@ -475,7 +413,7 @@ class CardController extends AbstractController implements ControllerInterface
             $scale = json_decode($scale, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailScale.php",
+                "view" => VIEW_DIR . "Karten/Karte/Detail/KarteBeiScale.php",
                 // Monstres, Magie et Piège : Main Deck
                 'scale' => $scale,
             ];
@@ -484,7 +422,7 @@ class CardController extends AbstractController implements ControllerInterface
             echo "API request failed.";
         }
     }
-    public function detailArchetype()
+    public function KarteBeiArchetype()
     {
         // API endpoint URL
 
@@ -503,7 +441,7 @@ class CardController extends AbstractController implements ControllerInterface
             $archetype = json_decode($archetype, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailArchetype.php",
+                "view" => VIEW_DIR . "Karten/Karte/Detail/KarteBeiArchetype.php",
                 'archetype' => $archetype,
             ];
         } else {
@@ -511,7 +449,7 @@ class CardController extends AbstractController implements ControllerInterface
             echo "API request failed.";
         }
     }
-    public function detailAttack($attackCard)
+    public function KarteBeiAngriff()
     {
         // API endpoint URL
 
@@ -530,7 +468,7 @@ class CardController extends AbstractController implements ControllerInterface
             $attack = json_decode($attack, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailAtk.php",
+                "view" => VIEW_DIR . "Karten/Karte/Detail/KarteBeiAngriff.php",
                 'attack' => $attack,
             ];
         } else {
@@ -538,7 +476,7 @@ class CardController extends AbstractController implements ControllerInterface
             echo "API request failed.";
         }
     }
-    public function detailDefense($defCard)
+    public function KarteBeiDefense()
     {
         // API endpoint URL
 
@@ -559,7 +497,7 @@ class CardController extends AbstractController implements ControllerInterface
             $def = json_decode($def, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailDef.php",
+                "view" => VIEW_DIR . "Karten/Karte/Detail/KarteBeiDefense.php",
                 // Monstres, Magie et Piège : Main Deck
                 'defense' => $def,
             ];
@@ -569,20 +507,20 @@ class CardController extends AbstractController implements ControllerInterface
         }
     }
     /* ********************** Formats de duel ************ */
-    public function typeOfDuel()
+    public function DuelFormat()
     {
         return [
-            "view" => VIEW_DIR . "cards/typeOfDuel.php",
+            "view" => VIEW_DIR . "Karten/DuelFormat.php",
         ];
     }
     /* ***********Decks********** */
-    public function creatDeckForm()
+    public function DeckFormular()
     {
         return [
-            "view" => VIEW_DIR . "cards/deck/creatDeck.php",
+            "view" => VIEW_DIR . "cards/deck/BaueDeck.php",
         ];
     }
-    public function creatDeck($nom)
+    public function BaueDeck($nom)
     {
         if (!empty($_POST)) {
             $deckName = filter_input(INPUT_POST, "deckName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -602,19 +540,19 @@ class CardController extends AbstractController implements ControllerInterface
                     ])
                 ) {
                     return [
-                        "view" => VIEW_DIR . "cards/deck/creatDeck.php",
+                        "view" => VIEW_DIR . "Karten/deck/BaueDeck.php",
                     ];
                 }
             } else {
                 echo "<h1 style='color:red;'>Erreur d'Enregistrement !</h1>";
                 return [
-                    "view" => VIEW_DIR . "cards/deck/creatDeck.php",
+                    "view" => VIEW_DIR . "Karten/deck/BaueDeck.php",
                 ];
             }
         } else {
             echo "<h1 style='color:orange;'>Ces données n'ont pas été soumis !</h1>";
             return [
-                "view" => VIEW_DIR . "cards/deck/creatDeck.php",
+                "view" => VIEW_DIR . "Karten/deck/BaueDeck.php",
             ];
         }
     }
@@ -680,45 +618,20 @@ class CardController extends AbstractController implements ControllerInterface
     //             ]
     //         ];
     // }
-    public function listDeck()
+    public function DeckListe()
     {
         $deckManager = new DeckManager();
         return
             [
-                "view" => VIEW_DIR . "cards/deck/listDeck.php",
+                "view" => VIEW_DIR . "cards/deck/DeckListe.php",
                 "data" =>
                 [
                     "decks" => $deckManager->findAllDeck()
                 ]
             ];
     }
-    public function detailDeck($id /*,$nom*/)
+    public function DeckInfos($id /*,$nom*/)
     {
-        // $nom = $_GET['name'];
-
-        // // API endpoint URL
-        // $card = "https://db.ygoprodeck.com/api/v7/cardinfo.php?language=de& &name=$nom";
-
-        // // Send GET request to the API
-        // $card = file_get_contents($card);
-
-        // // Handle the response
-        // if ($card) 
-        // {
-        //     // Convert JSON response to PHP array
-        //     $card = json_decode($card, true);
-
-        //     return 
-        //     [
-        //         "view" => VIEW_DIR . "cards/cartes/detailCard.php",
-        //         'card' => $card,
-        //     ];
-
-        // } else {
-        //     // Handle error if request fails
-        //     echo "API request failed.";
-        // }
-
         $deckManager = new DeckManager();
         return
             [

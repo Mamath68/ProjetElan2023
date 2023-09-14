@@ -1,22 +1,22 @@
 <?php
-$linkmarkers = $result['linkmarkers']['data'];
+$linkval = $result['linkval']['data'];
 
 ?>
 <div class="main2">
     <button class="openbtn" onclick="openNav()">☰</button>
-    <h1 class="p-3 primetitle text-light">Monstres avec les Marqueurs Lien placé
-        <?= $_GET['linkmarkers'] ?>
+    <h1 class="p-3 primetitle text-light">Monstres de Valeur Lien
+        <?= $_GET['linkval'] ?>
     </h1>
 </div>
 <div class="main3">
-    <h1 class="p-3 primetitle text-light">Monstres avec les Marqueurs Lien placé
-        <?= $_GET['linkmarkers'] ?>
+    <h1 class="p-3 primetitle text-light">Monstres de Valeur Lien
+        <?= $_GET['linkval'] ?>
     </h1>
 </div>
 <div class="container text-center">
     <div class="row">
         <?php
-        foreach ($linkmarkers as $card) {
+        foreach ($linkval as $card) {
             $counter2 = 0;
             foreach ($card['card_images'] as $img) {
                 if ($counter2 <= 0) {
@@ -37,7 +37,7 @@ $linkmarkers = $result['linkmarkers']['data'];
                                 </div>
                                 <div>
                                     <p class="card-text"><a class="link-light"
-                                            href="index.php?ctrl=card&action=detailCard&id=<?= $card['id'] ?>"
+                                            href="index.php?ctrl=card&action=KarteBeiNammen&id=<?= $card['id'] ?>"
                                             target="_blank">Détail</a></p>
                                 </div>
                             </div>
@@ -53,4 +53,4 @@ $linkmarkers = $result['linkmarkers']['data'];
 </div>
 <?php
 
-$title = "Link Markers " . " " . $_GET['linkmarkers'];
+$title = "Valeur Lien " . " " . $_GET['linkval'];

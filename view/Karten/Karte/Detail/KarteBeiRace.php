@@ -1,22 +1,22 @@
 <?php
-$scale = $result['scale']['data'];
+$race = $result['race']['data'];
 
 ?>
 <div class="main2">
     <button class="openbtn" onclick="openNav()">☰</button>
-    <h1 class="p-3 primetitle text-light">Monstres Pendule à Echelle
-        <?= $_GET['scale'] ?>
+    <h1 class="p-3 primetitle text-light">Carte de type
+        <?= $_GET['race'] ?>
     </h1>
 </div>
 <div class="main3">
-    <h1 class="p-3 primetitle text-light">Monstres Pendule à Echelle
-        <?= $_GET['scale'] ?>
+    <h1 class="p-3 primetitle text-light">Carte de type
+        <?= $_GET['race'] ?>
     </h1>
 </div>
 <div class="container text-center">
     <div class="row">
         <?php
-        foreach ($scale as $card) {
+        foreach ($race as $card) {
             $counter2 = 0;
             foreach ($card['card_images'] as $img) {
                 if ($counter2 <= 0) {
@@ -37,7 +37,7 @@ $scale = $result['scale']['data'];
                                 </div>
                                 <div>
                                     <p class="card-text"><a class="link-light"
-                                            href="index.php?ctrl=card&action=detailCard&id=<?= $card['id'] ?>"
+                                            href="index.php?ctrl=card&action=KarteBeiNammen&id=<?= $card['id'] ?>"
                                             target="_blank">Détail</a></p>
                                 </div>
                             </div>
@@ -53,4 +53,4 @@ $scale = $result['scale']['data'];
 </div>
 <?php
 
-$title = "Pendulum Scale " . " " . $_GET['scale'];
+$title = $_GET['race'];

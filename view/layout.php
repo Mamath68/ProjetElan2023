@@ -58,7 +58,7 @@
                             <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Das KartenSpiel </button>
                             <ul class="dropdown-menu Yugioh">
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">KartenVorstellung</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=vorstellung">KartenVorstellung</a>
                                 </li>
                                 <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
                                         role="button">Recherches</a></li> -->
@@ -72,9 +72,9 @@
                                 Das Yu-Gi-Oh! Universum
                             </button>
                             <ul class="dropdown-menu Yugioh">
-                                <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findeAlleMangas">Mangas</a>
                                 </li>
-                                <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Anime</a></li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findeAlleAnime">Anime</a></li>
                             </ul>
                         </li>
                     </ol>
@@ -86,7 +86,7 @@
                             <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Das KartenSpiel </button>
                             <ul class="dropdown-menu Yugioh">
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">KartenVorstellung</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=vorstellung">KartenVorstellung</a>
                                 </li>
                                 <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
                                         role="button">Recherches</a></li> -->
@@ -100,9 +100,9 @@
                                 Das Yu-Gi-Oh! Universum
                             </button>
                             <ul class="dropdown-menu Yugioh">
-                                <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findeAlleMangas">Mangas</a>
                                 </li>
-                                <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Anime</a></li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findeAlleAnime">Anime</a></li>
                             </ul>
                         </li>
                     </div>
@@ -148,7 +148,7 @@
                             <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Das KartenSpiel </button>
                             <ul class="dropdown-menu Yugioh">
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">KartenVorstellung</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=vorstellung">KartenVorstellung</a>
                                 </li>
                                 <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
                                             role="button">Recherches</a></li> -->
@@ -162,9 +162,9 @@
                                 Das Yu-Gi-Oh! Universum
                             </button>
                             <ul class="dropdown-menu Yugioh">
-                                <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findeAlleMangas">Mangas</a>
                                 </li>
-                                <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Anime</a></li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findeAlleAnime">Anime</a></li>
                             </ul>
                         </li>
                     </ol>
@@ -176,7 +176,7 @@
                             <button type="button" class="bouton btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Das KartenSpiel </button>
                             <ul class="dropdown-menu Yugioh">
-                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">KartenVorstellung</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=vorstellung">KartenVorstellung</a>
                                 </li>
                                 <!-- <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchCard"
                                         role="button">Recherches</a></li> -->
@@ -190,9 +190,9 @@
                                 Das Yu-Gi-Oh! Universum
                             </button>
                             <ul class="dropdown-menu Yugioh">
-                                <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a>
+                                <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findeAlleMangas">Mangas</a>
                                 </li>
-                                <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Anime</a></li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findeAlleAnime">Anime</a></li>
                             </ul>
                         </li>
                     </div>

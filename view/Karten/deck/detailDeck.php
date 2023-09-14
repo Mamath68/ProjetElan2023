@@ -18,7 +18,7 @@ if (Core\Session::isAdmin()) {
             <?= $deck->getDeckName() ?>
         </h1>
         <?php
-        // '<a href="index.php?ctrl=card&action=detailCard&name='.$card['name'].'">Le nom de la carte</a>'
+        // '<a href="index.php?ctrl=card&action=KarteBeiNammen&name='.$card['name'].'">Le nom de la carte</a>'
 
     }
 } else if (Core\Session::getUser()) {
@@ -30,7 +30,7 @@ if (Core\Session::isAdmin()) {
             <?= $deck->getDeckName() ?>
             </h1>
         <?php
-        // '<a href="index.php?ctrl=card&action=detailCard&name='.$card['name'].'">Le nom de la carte</a>'
+        // '<a href="index.php?ctrl=card&action=KarteBeiNammen&name='.$card['name'].'">Le nom de la carte</a>'
 
     }
 } else {
@@ -42,7 +42,7 @@ if (Core\Session::isAdmin()) {
             <?= $deck->getDeckName() ?>
             </h1>
         <?php
-        // '<a href="index.php?ctrl=card&action=detailCard&name='.$card['name'].'">Le nom de la carte</a>'
+        // '<a href="index.php?ctrl=card&action=KarteBeiNammen&name='.$card['name'].'">Le nom de la carte</a>'
 
     }
 }

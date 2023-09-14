@@ -1,21 +1,22 @@
 <?php
-$attack = $result['attack']['data'];
+$defense = $result['defense']['data'];
+
 ?>
 <div class="main2">
     <button class="openbtn" onclick="openNav()">☰</button>
     <h1 class="p-3 primetitle text-light">Monstres avec
-        <?= $_GET['atk'] ?> point d'attaque
+        <?= $_GET['def'] ?> point de defense
     </h1>
 </div>
 <div class="main3">
     <h1 class="p-3 primetitle text-light">Monstres avec
-        <?= $_GET['atk'] ?> point d'attaque
+        <?= $_GET['def'] ?> point de defense
     </h1>
 </div>
 <div class="container text-center">
     <div class="row">
         <?php
-        foreach ($attack as $card) {
+        foreach ($defense as $card) {
             $counter2 = 0;
             foreach ($card['card_images'] as $img) {
                 if ($counter2 <= 0) {
@@ -36,7 +37,7 @@ $attack = $result['attack']['data'];
                                 </div>
                                 <div>
                                     <p class="card-text"><a class="link-light"
-                                            href="index.php?ctrl=card&action=detailCard&id=<?= $card['id'] ?>"
+                                            href="index.php?ctrl=card&action=KarteBeiNammen&id=<?= $card['id'] ?>"
                                             target="_blank">Détail</a></p>
                                 </div>
                             </div>
@@ -52,4 +53,4 @@ $attack = $result['attack']['data'];
 </div>
 
 <?php
-$title = "Attack" . " " . $_GET['atk'];
+$title = "Defense" . " " . $_GET['def'];

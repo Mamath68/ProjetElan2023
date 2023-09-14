@@ -26,7 +26,7 @@ foreach ($animes as $anime) {
       <tr>
         <td><?=$anime->getAnimeName()?></td>
         <td><img src="<?=$anime->getImg()?>" class="img-fluid"></td>
-        <td><a class="link-light" href="index.php?ctrl=anime&action=findAnimeById&id=<?=$anime->getId()?>">Details</a></td>
+        <td><a class="link-light" href="index.php?ctrl=anime&action=findeAnimeDurchId&id=<?=$anime->getId()?>">Details</a></td>
       </tr>
       <?php
 }

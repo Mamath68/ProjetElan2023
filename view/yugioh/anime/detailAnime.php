@@ -3,7 +3,7 @@ $animes = $result["data"]["animes"];
 
 foreach ($animes as $anime) {
 
-    ?>
+?>
     <div class="main2">
         <button class="openbtn" onclick="openNav()">☰</button>
         <h1 class="p-3 primetitle text-light">
@@ -41,7 +41,7 @@ foreach ($animes as $anime) {
             </div>
         </div>
     </div>
-    <?php
+<?php
 }
 
 $title = $anime->getAnimeName();

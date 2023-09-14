@@ -26,7 +26,7 @@ foreach ($mangas as $manga) {
       <tr>
         <td><?=$manga->getMangasName()?></td>
         <td><img src="<?=$manga->getImg()?>" class="img-fluid"></td>
-        <td><a class="link-light" href="index.php?ctrl=mangas&action=findMangasById&id=<?=$manga->getId()?>">Details</a></td>
+        <td><a class="link-light" href="index.php?ctrl=mangas&action=findeMangasDurchId&id=<?=$manga->getId()?>">Details</a></td>
       </tr>
       <?php
 }

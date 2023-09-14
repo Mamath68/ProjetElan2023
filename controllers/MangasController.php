@@ -16,29 +16,32 @@ class MangasController extends AbstractController implements ControllerInterface
 
     public function index()
     {
+        // API Endpoint(Who die karten sich befinden)
         $cardsEndpoint = "https://db.ygoprodeck.com/api/v7/cardinfo.php?language=de";
 
-        // Send GET request to the API
+        // Sendet GET request zu das API
         $cardsResponse = file_get_contents($cardsEndpoint);
 
-        // Handle the response
+        // behandelt die antwort
 
         if ($cardsResponse) {
 
-            // Convert JSON response to PHP array
+            // Wechselt JSON-Antwort in PHP-array
             $cardsArray = json_decode($cardsResponse, true);
 
-            // Get the total number of available cards
+            // Erhalten Sie die Gesamtzahl der verfügbaren Karten
             $totalCards = count($cardsArray['data']);
 
-            // Generate a random index to select a card
+            // Generieren Sie einen zufälligen Index, um eine Karte auszuwählen
             $randomIndex = array_rand($cardsArray['data']);
 
-            // Retrieve the randomly selected card using the random index
+            // Rufen Sie die zufällig ausgewählte Karte mithilfe des Zufallsindex ab
             $randomCard = $cardsArray['data'][$randomIndex];
 
             return [
+                // Wo ich die karte senden will
                 "view" => VIEW_DIR . "home.php",
+                // Die Daten die ich sende
                 "data" => [
                     "card" => $randomCard,
                     // var_dump($randomCard),
@@ -47,13 +50,13 @@ class MangasController extends AbstractController implements ControllerInterface
 
         } else {
 
-            // Handle error if request fails
+            // Behandelt die antwort im falle dessen dass das API ein fehler Hat
 
             echo "API request failed.";
 
         }
     }
-    public function findAllMangas()
+    public function findeAlleMangas()
     {
         $mangasManager = new MangasManager();
 
@@ -64,7 +67,7 @@ class MangasController extends AbstractController implements ControllerInterface
             ]
         ];
     }
-    public function findMangasById($id)
+    public function findeMangasDurchId($id)
     {
         $mangasManager = new MangasManager();
         return [
