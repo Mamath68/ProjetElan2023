@@ -43,15 +43,4 @@ class ReponseManager extends Manager
             $this->className
         );
     }
-    public function deleteAnswerById($id)
-    {
-        $sql = " DELETE 
-        FROM " . $this->tableName . " r
-        WHERE r.id_reponse = :id
-        ";
-        return $this->getMultipleResults(
-            DAO::select($sql, ['id' => $id], true),
-            $this->className
-        );
-    }
 }
