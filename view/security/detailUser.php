@@ -28,11 +28,8 @@ if (Core\Session::isAdmin()) {
         </ul>
         <div class="card-body">
             <a href="index.php?ctrl=socialnetwork&action=findPublicationsByUsers&id=<?= Core\Session::getUser()->getId() ?>"
-                class="card-link btn btn-primary"> Mes Publications
+                class="card-link btn btn-primary">Les Publications
             </a>
-            <a href="index.php?ctrl=security&action=deleteAccountForm&id=<?= Core\Session::getUser()->getId() ?>"
-                class="card-link btn btn-warning">Delete
-                Account</a>
         </div>
     </div>
 

@@ -160,4 +160,17 @@ class SecurityController extends AbstractController implements ControllerInterfa
         ];
 
     }
+    public function deleteAccount($id)
+    {
+        $userManager = new UserManager();
+
+        if ($userManager) {
+            $userManager->delete($id);
+            unset($_SESSION['user']);
+            $this->redirectTo("security", "index");
+            return [
+                "view" => VIEW_DIR . "security/deleteAccount.php",
+            ];
+        }
+    }
 }

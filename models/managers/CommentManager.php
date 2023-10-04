@@ -47,5 +47,4 @@ class CommentManager extends Manager
             $this->className
         );
     }
-
 }

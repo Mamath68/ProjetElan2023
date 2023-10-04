@@ -6,9 +6,8 @@
     <p>Cette action est définitive</p>
 
     <div class="separate">
-        <button type="button" class="btn btn-warning m-3 p-3"><a class="link-dark" href="#">Confirmer</a></button>
-        <button type="button" class="btn btn-secondary m-3 p-3"><a class="link-light"
-                href="index.php?ctrl=home&action=detailUser&id=<?= Core\Session::getUser()->getId() ?>">Annuler</a></button>
+        <button type="button" class="btn btn-warning m-3 p-3"><a class="link-dark" href="index.php?ctrl=security&action=deleteAccount&id=<?= Core\Session::getUser()->getId() ?>">Confirmer</a></button>
+        <button type="button" class="btn btn-secondary m-3 p-3"><a class="link-light" href="index.php?ctrl=home&action=detailUser&id=<?= Core\Session::getUser()->getId() ?>">Annuler</a></button>
     </div>
 </section>
 <?php

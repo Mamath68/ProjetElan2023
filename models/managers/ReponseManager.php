@@ -32,11 +32,22 @@ class ReponseManager extends Manager
 
     public function findCommentsByComment($id)
     {
-        $sql = "SELECT r.id_reponse, r.body, r.img, r.reponseDate, c.id_comment
+        $sql = "SELECT r.id_reponse, r.body, r.img, r.reponseDate
         FROM " . $this->tableName . " r
         INNER JOIN COMMENT c 
         ON c.id_comment = r.comment_id
         WHERE r.comment_id = :id
+        ";
+        return $this->getMultipleResults(
+            DAO::select($sql, ['id' => $id], true),
+            $this->className
+        );
+    }
+    public function deleteAnswerById($id)
+    {
+        $sql = " DELETE 
+        FROM " . $this->tableName . " r
+        WHERE r.id_reponse = :id
         ";
         return $this->getMultipleResults(
             DAO::select($sql, ['id' => $id], true),

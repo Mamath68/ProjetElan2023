@@ -46,13 +46,11 @@ class SocialNetworkController extends AbstractController implements ControllerIn
                     // var_dump($randomCard),
                 ]
             ];
-
         } else {
 
             // Handle error if request fails
 
             echo "API request failed.";
-
         }
     }
     public function findPublicationsByUsers($id)
@@ -86,16 +84,15 @@ class SocialNetworkController extends AbstractController implements ControllerIn
                 );
             }
             $this->redirectTo("socialNetwork", "findAllPublications");
-
-        }
-        return
-            [
-                "view" => VIEW_DIR . "socialNetwork/listPublication.php",
-                "data" =>
+            return
                 [
-                    "publication" => $publication,
-                ]
-            ];
+                    "view" => VIEW_DIR . "socialNetwork/listPublication.php",
+                    "data" =>
+                    [
+                        "publication" => $publication,
+                    ]
+                ];
+        }
     }
 
     public function findAllPublications()
@@ -109,7 +106,6 @@ class SocialNetworkController extends AbstractController implements ControllerIn
             ]
         ];
     }
-
     public function addComment()
     {
         $publicationManager = new PublicationManager();
@@ -130,19 +126,18 @@ class SocialNetworkController extends AbstractController implements ControllerIn
                             "publication_id" => $id,
                         ]
                     )
-                )
-                    ;
+                );
             }
             $this->redirectTo("socialNetwork", "viewCommentByPublication", $id);
-        }
-        return
-            [
-                "view" => VIEW_DIR . "socialNetwork/viewComment.php",
-                "data" =>
+            return
                 [
-                    "comment" => $commentManager->findOneById($id)
-                ]
-            ];
+                    "view" => VIEW_DIR . "socialNetwork/viewComment.php",
+                    "data" =>
+                    [
+                        "comment" => $commentManager->findOneById($id)
+                    ]
+                ];
+        }
     }
     public function viewCommentByPublication($id)
     {
@@ -157,7 +152,6 @@ class SocialNetworkController extends AbstractController implements ControllerIn
             ]
         ];
     }
-
     public function replyTheComment()
     {
         $commentManager = new CommentManager();
@@ -177,19 +171,18 @@ class SocialNetworkController extends AbstractController implements ControllerIn
                             "comment_id" => $id,
                         ]
                     )
-                )
-                    ;
+                );
             }
             $this->redirectTo("socialNetwork", "viewCommentsByComment", $id);
-        }
-        return
-            [
-                "view" => VIEW_DIR . "socialNetwork/commentToTheComment.php",
-                "data" =>
+            return
                 [
-                    "reponses" => $reponseManager->findOneById($id)
-                ]
-            ];
+                    "view" => VIEW_DIR . "socialNetwork/commentToTheComment.php",
+                    "data" =>
+                    [
+                        "reponses" => $reponseManager->findOneById($id)
+                    ]
+                ];
+        }
     }
     public function viewCommentsByComment($id)
     {
@@ -217,7 +210,6 @@ class SocialNetworkController extends AbstractController implements ControllerIn
         $reponse = $id;
 
         header('Location:index.php?ctrl=socialnetwork&action=findAllPublications');
-
     }
     public function deleteComment($id)
     {
@@ -231,21 +223,17 @@ class SocialNetworkController extends AbstractController implements ControllerIn
         $reponse = $id;
 
         header('Location:index.php?ctrl=socialnetwork&action=viewCommentsByComment&id=' . $id . '');
-
     }
-    public function deleteAnswer($id)
+    public function deleteReponse($id)
     {
-        $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $publicationManager = new PublicationManager();
-        $commentManager = new CommentManager();
-        $reponseManager = new reponseManager();
-        $commentManager->findOneById($commentManager);
+        $reponseManager = new ReponseManager();
 
-        $reponseManager = $id;
-        $reponseManager->delete($id);
-
-        header('Location:index.php?ctrl=socialnetwork&action=viewCommentsByComment&id=' . $id . '');
-
+        if ($reponseManager) {
+            $reponseManager->delete($id);
+            $this->redirectTo("SocialNetwork", "findAllPublication");
+            return [
+                "view" => VIEW_DIR . "SocialNetwork/viewCommentByComment.php",
+            ];
+        }
     }
-
 }

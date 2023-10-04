@@ -14,15 +14,15 @@ $reponses = $result["data"]['reponses'];
 <?php
 /*************************************************************************************************************
                                            SI ADMINISTRATEUR
-   *************************************************************************************************************/
+ *************************************************************************************************************/
 if (Core\Session::isAdmin()) {
     /*************************************************************************************************************
                                             Commentaire
-    *************************************************************************************************************/
+     *************************************************************************************************************/
     if (!empty($comments)) {
         foreach ($comments as $comment) {
             if ($comment->getImage()) {
-                ?>
+?>
                 <div class="card bg-primary text-center commentaireReponse">
                     <img class="card-img-top" src="public/img/<?= $comment->getImage() ?>" alt="Image commenté">
                     <div class="card-body">
@@ -34,9 +34,9 @@ if (Core\Session::isAdmin()) {
                             </strong></p>
                     </div>
                 </div>
-                <?php
+            <?php
             } else {
-                ?>
+            ?>
                 <div class="card bg-primary text-center commentaireReponse">
                     <div class="card-body">
                         <p class="card-text text-center text-light"><strong>
@@ -48,7 +48,7 @@ if (Core\Session::isAdmin()) {
                         </p>
                     </div>
                 </div>
-                <?php
+        <?php
             }
         }
     } else {
@@ -59,11 +59,11 @@ if (Core\Session::isAdmin()) {
 
     /*************************************************************************************************************
                                             Réponses du Commentaire
-    *************************************************************************************************************/
+     *************************************************************************************************************/
     if (!empty($reponses)) {
         foreach ($reponses as $reponse) {
             if ($reponse->getImg()) {
-                ?>
+        ?>
                 <div class="card mb-5 bg-dark text-light reponse">
                     <div class="row ligne g-0">
                         <div class="col-md-4">
@@ -81,17 +81,15 @@ if (Core\Session::isAdmin()) {
                                 </p>
                             </div>
                             <div class="editdelete">
-                                <a href="#" class="card-link btn btn-primary link-light">Répondre</a>
-                                <a href="index.php?ctrl=socialNetwork&action=deletePublication&id=<?= $reponse->getId() ?>"
-                                    class="card-link btn btn-primary link-light">Supprimer</a>
+                                <a href="index.php?ctrl=socialNetwork&action=deleteReponse&id=<?= $reponse->getId() ?>" class="card-link btn btn-primary link-light">Supprimer</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <?php
+            <?php
             } else {
-                ?>
+            ?>
                 <div class="card mb-5 bg-dark text-light reponse2">
                     <div class="col-md-2">
                         <div class="card-body">
@@ -105,14 +103,11 @@ if (Core\Session::isAdmin()) {
                         </div>
                     </div>
                     <div class="editdelete">
-                        <a href="#" class="card-link btn btn-primary link-light">Répondre</a>
-                        <a href="index.php?ctrl=socialNetwork&action=deletePublication&id=<?= $reponse->getId() ?>"
-                            class="card-link btn btn-primary link-light">Supprimer</a>
+                        <a href="index.php?ctrl=socialNetwork&action=deleteReponse&id=<?= $reponse->getId() ?>" class="card-link btn btn-primary link-light">Supprimer</a>
                     </div>
                 </div>
-                <?php
+        <?php
             }
-
         }
     } else {
         ?>
@@ -123,107 +118,102 @@ if (Core\Session::isAdmin()) {
 
     /*************************************************************************************************************
                                            SI SIMPLE UTILISATEUR
-   *************************************************************************************************************/
+     *************************************************************************************************************/
 } else if (Core\Session::getUser()) {
     if (!empty($comments)) {
         foreach ($comments as $comment) {
             if ($comment->getImage()) {
-                ?>
-                    <div class="card bg-primary text-center commentaireReponse">
-                        <img class="card-img-top" src="public/img/<?= $comment->getImage() ?>" alt="Image commenté">
-                        <div class="card-body">
-                            <p class="card-text text-center text-light">
+        ?>
+                <div class="card bg-primary text-center commentaireReponse">
+                    <img class="card-img-top" src="public/img/<?= $comment->getImage() ?>" alt="Image commenté">
+                    <div class="card-body">
+                        <p class="card-text text-center text-light">
                             <?= ucfirst($comment->getBody()) ?>
-                            </p>
-                            <p class="card-text text-center text-light"><strong>
+                        </p>
+                        <p class="card-text text-center text-light"><strong>
                                 <?= $comment->getCommentDate() ?>
-                                </strong></p>
-                        </div>
+                            </strong></p>
                     </div>
-                <?php
+                </div>
+            <?php
             } else {
-                ?>
-                    <div class="card bg-primary text-center commentaireReponse">
-                        <div class="card-body">
-                            <p class="card-text text-center text-light"><strong>
+            ?>
+                <div class="card bg-primary text-center commentaireReponse">
+                    <div class="card-body">
+                        <p class="card-text text-center text-light"><strong>
                                 <?= ucfirst($comment->getBody()) ?>
-                                </strong></p>
-                            <p class="card-text text-center text-light"><strong>
+                            </strong></p>
+                        <p class="card-text text-center text-light"><strong>
                                 <?= $comment->getCommentDate() ?>
-                                    </stong>
-                            </p>
-                        </div>
+                                </stong>
+                        </p>
                     </div>
-                <?php
+                </div>
+        <?php
             }
         }
     } else {
         ?>
-            <h2><strong>Pas de Commentaires pour cette publication!</strong></h2>";
+        <h2><strong>Pas de Commentaires pour cette publication!</strong></h2>";
         <?php
     }
 
     /*************************************************************************************************************
                                             Réponses du Commentaire
-    *************************************************************************************************************/
+     *************************************************************************************************************/
     if (!empty($reponses)) {
         foreach ($reponses as $reponse) {
             if ($reponse->getImg()) {
-                ?>
-                    <div class="card mb-5 bg-dark text-light reponse">
-                        <div class="row ligne g-0">
-                            <div class="col-md-4">
-                                <img src="public/img/<?= $reponse->getImg() ?>" class="img-fluid rounded-start" alt="Image commentaire">
-                            </div>
-                            <div class="col-md-7 commentsize">
-                                <div class="card-body">
-                                    <p class="card-text text-center text-light">
-                                    <?= ucfirst($reponse->getBody()) ?>
-                                    </p>
-                                    <p class="card-text text-center text-light">
-                                        <small class="text-body-light">
-                                        <?= $reponse->getReponseDate() ?>
-                                        </small>
-                                    </p>
-                                </div>
-                                <div class="editdelete">
-                                    <a href="#" class="card-link btn btn-primary link-light">Répondre</a>
-                                    <a href="index.php?ctrl=socialNetwork&action=deletePublication&id=<?= $reponse->getId() ?>"
-                                        class="card-link btn btn-primary link-light">Supprimer</a>
-                                </div>
-                            </div>
+        ?>
+                <div class="card mb-5 bg-dark text-light reponse">
+                    <div class="row ligne g-0">
+                        <div class="col-md-4">
+                            <img src="public/img/<?= $reponse->getImg() ?>" class="img-fluid rounded-start" alt="Image commentaire">
                         </div>
-                    </div>
-
-                <?php
-            } else {
-                ?>
-                    <div class="card mb-5 bg-dark text-light reponse2">
-                        <div class="col-md-2">
+                        <div class="col-md-7 commentsize">
                             <div class="card-body">
                                 <p class="card-text text-center text-light">
-                                <?= ucfirst($reponse->getBody()) ?>
+                                    <?= ucfirst($reponse->getBody()) ?>
                                 </p>
-                                <p class="card-text text-center "><small class="text-body-light">
-                                    <?= $reponse->getReponseDate() ?>
+                                <p class="card-text text-center text-light">
+                                    <small class="text-body-light">
+                                        <?= $reponse->getReponseDate() ?>
                                     </small>
                                 </p>
                             </div>
-                        </div>
-                        <div class="editdelete">
-                            <a href="#" class="card-link btn btn-primary link-light">Répondre</a>
-                            <a href="index.php?ctrl=socialNetwork&action=deletePublication&id=<?= $reponse->getId() ?>"
-                                class="card-link btn btn-primary link-light">Supprimer</a>
+                            <div class="editdelete">
+                                <a href="index.php?ctrl=socialNetwork&action=deleteReponse&id=<?= $reponse->getId() ?>" class="card-link btn btn-primary link-light">Supprimer</a>
+                            </div>
                         </div>
                     </div>
-                <?php
-            }
+                </div>
 
+            <?php
+            } else {
+            ?>
+                <div class="card mb-5 bg-dark text-light reponse2">
+                    <div class="col-md-2">
+                        <div class="card-body">
+                            <p class="card-text text-center text-light">
+                                <?= ucfirst($reponse->getBody()) ?>
+                            </p>
+                            <p class="card-text text-center "><small class="text-body-light">
+                                    <?= $reponse->getReponseDate() ?>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="editdelete">
+                        <a href="index.php?ctrl=socialNetwork&action=deleteReponse&id=<?= $reponse->getId() ?>" class="card-link btn btn-primary link-light">Supprimer</a>
+                    </div>
+                </div>
+        <?php
+            }
         }
     } else {
         ?>
-            <h2><strong>Pas de Réponse à ce commentaire!</strong></h2>
-        <?php
+        <h2><strong>Pas de Réponse à ce commentaire!</strong></h2>
+<?php
     }
 }
 $title = "Blog";
