@@ -16,19 +16,18 @@ class UserManager extends Manager
         parent::connect();
     }
 
-    public function findOneByPseudo($data, $order = null)
+    public function findOneByEmail($data, $order = null)
     {
         $orderQuery = ($order) ?
             "ORDER BY " . $order[0] . " " . $order[1] :
             "";
         $sql = "SELECT *
         FROM " . $this->tableName . " u
-        WHERE u.pseudo = :pseudo
-        " . $orderQuery;
-        ;
+        WHERE u.email = :email
+        " . $orderQuery;;
 
         return $this->getOneOrNullResult(
-            DAO::select($sql, ['pseudo' => $data], false),
+            DAO::select($sql, ['email' => $data], false),
             $this->className
         );
     }

@@ -69,5 +69,5 @@ if ($action == "ajax") { //si l'action était ajax
     /*j'efface le tampon*/
     ob_end_clean();
     /*j'affiche le template principal (layout)*/
-    include VIEW_DIR . "layout.php";
+    include VIEW_DIR . "layout.html.php";
 }

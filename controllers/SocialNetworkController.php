@@ -5,52 +5,31 @@ namespace Controllers;
 use Core\Session;
 use Core\AbstractController;
 use Core\ControllerInterface;
-use Models\Managers\UserManager;
 use Models\Managers\PublicationManager;
 use Models\Managers\CommentManager;
 use Models\Managers\ReponseManager;
-
-// use Models\Managers\MessageManager;
-
 
 class SocialNetworkController extends AbstractController implements ControllerInterface
 {
 
     public function index()
     {
-        $cardsEndpoint = "https://db.ygoprodeck.com/api/v7/cardinfo.php";
-
-        // Send GET request to the API
-        $cardsResponse = file_get_contents($cardsEndpoint);
-
-        // Handle the response
-
-        if ($cardsResponse) {
+        try {
+            // Send GET request to the API
+            $cardsResponse = file_get_contents("https://db.ygoprodeck.com/api/v7/randomcard.php");
 
             // Convert JSON response to PHP array
-            $cardsArray = json_decode($cardsResponse, true);
-
-            // Get the total number of available cards
-            $totalCards = count($cardsArray['data']);
-
-            // Generate a random index to select a card
-            $randomIndex = array_rand($cardsArray['data']);
-
-            // Retrieve the randomly selected card using the random index
-            $randomCard = $cardsArray['data'][$randomIndex];
+            $randomCard = json_decode($cardsResponse, true);
 
             return [
-                "view" => VIEW_DIR . "home.php",
+                "view" => VIEW_DIR . "home.html.php",
                 "data" => [
                     "card" => $randomCard,
                     // var_dump($randomCard),
                 ]
             ];
-        } else {
-
-            // Handle error if request fails
-
-            echo "API request failed.";
+        } catch (\Throwable $th) {
+            throw new \ErrorException("Erreur lors de la récupération de la carte aleatoire : " . $th->getMessage());
         }
     }
     public function findPublicationsByUsers($id)
@@ -58,7 +37,7 @@ class SocialNetworkController extends AbstractController implements ControllerIn
         $publicationManager = new PublicationManager();
 
         return [
-            "view" => VIEW_DIR . "socialNetwork/publicationByUsers.php",
+            "view" => VIEW_DIR . "socialNetwork/publicationByUsers.html.php",
             "data" => [
                 "publications" => $publicationManager->findPublicationsByUser($id, ["id_publication", "ASC"]),
             ]
@@ -86,7 +65,7 @@ class SocialNetworkController extends AbstractController implements ControllerIn
             $this->redirectTo("socialNetwork", "findAllPublications");
             return
                 [
-                    "view" => VIEW_DIR . "socialNetwork/listPublication.php",
+                    "view" => VIEW_DIR . "socialNetwork/listPublication.html.php",
                     "data" =>
                     [
                         "publication" => $publication,
@@ -100,7 +79,7 @@ class SocialNetworkController extends AbstractController implements ControllerIn
         $publicationManager = new PublicationManager();
 
         return [
-            "view" => VIEW_DIR . "socialNetwork/listPublication.php",
+            "view" => VIEW_DIR . "socialNetwork/listPublication.html.php",
             "data" => [
                 "publications" => $publicationManager->findAllPublications(["publicationDate", "ASC"]),
             ]
@@ -131,7 +110,7 @@ class SocialNetworkController extends AbstractController implements ControllerIn
             $this->redirectTo("socialNetwork", "viewCommentByPublication", $id);
             return
                 [
-                    "view" => VIEW_DIR . "socialNetwork/viewComment.php",
+                    "view" => VIEW_DIR . "socialNetwork/viewComment.html.php",
                     "data" =>
                     [
                         "comment" => $commentManager->findOneById($id)
@@ -145,7 +124,7 @@ class SocialNetworkController extends AbstractController implements ControllerIn
         $commentManager = new CommentManager();
 
         return [
-            "view" => VIEW_DIR . "socialNetwork/viewComment.php",
+            "view" => VIEW_DIR . "socialNetwork/viewComment.html.php",
             "data" => [
                 "publication" => $publicationManager->findOneById($id),
                 "comments" => $commentManager->findCommentByPublication($id),
@@ -176,7 +155,7 @@ class SocialNetworkController extends AbstractController implements ControllerIn
             $this->redirectTo("socialNetwork", "viewCommentsByComment", $id);
             return
                 [
-                    "view" => VIEW_DIR . "socialNetwork/commentToTheComment.php",
+                    "view" => VIEW_DIR . "socialNetwork/commentToTheComment.html.php",
                     "data" =>
                     [
                         "reponses" => $reponseManager->findOneById($id)
@@ -191,7 +170,7 @@ class SocialNetworkController extends AbstractController implements ControllerIn
         $reponseManager = new ReponseManager();
 
         return [
-            "view" => VIEW_DIR . "socialNetwork/commentToTheComment.php",
+            "view" => VIEW_DIR . "socialNetwork/commentToTheComment.html.php",
             "data" => [
                 "comment" => $commentManager->findOneById($id),
                 "reponses" => $reponseManager->findCommentsByComment($id)
@@ -232,7 +211,7 @@ class SocialNetworkController extends AbstractController implements ControllerIn
             $reponseManager->delete($id);
             $this->redirectTo("SocialNetwork", "findAllPublication");
             return [
-                "view" => VIEW_DIR . "SocialNetwork/viewCommentByComment.php",
+                "view" => VIEW_DIR . "SocialNetwork/viewCommentByComment.html.php",
             ];
         }
     }

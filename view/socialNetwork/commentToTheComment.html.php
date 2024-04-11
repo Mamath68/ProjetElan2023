@@ -218,4 +218,4 @@ if (Core\Session::isAdmin()) {
 }
 $title = "Blog";
 
-include_once("addAnswer.php");
+include_once("addAnswer.html.php");

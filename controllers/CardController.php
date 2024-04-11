@@ -15,126 +15,68 @@ class CardController extends AbstractController implements ControllerInterface
 
     public function index()
     {
-        $cardsEndpoint = "https://db.ygoprodeck.com/api/v7/cardinfo.php";
-
-        // Send GET request to the API
-        $cardsResponse = file_get_contents($cardsEndpoint);
-
-        // Handle the response
-
-        if ($cardsResponse) {
+        try {
+            // Send GET request to the API
+            $cardsResponse = file_get_contents("https://db.ygoprodeck.com/api/v7/randomcard.php");
 
             // Convert JSON response to PHP array
-            $cardsArray = json_decode($cardsResponse, true);
-
-            // Get the total number of available cards
-            $totalCards = count($cardsArray['data']);
-
-            // Generate a random index to select a card
-            $randomIndex = array_rand($cardsArray['data']);
-
-            // Retrieve the randomly selected card using the random index
-            $randomCard = $cardsArray['data'][$randomIndex];
+            $randomCard = json_decode($cardsResponse, true);
 
             return [
-                "view" => VIEW_DIR . "home.php",
+                "view" => VIEW_DIR . "home.html.php",
                 "data" => [
                     "card" => $randomCard,
                     // var_dump($randomCard),
                 ]
             ];
-
-        } else {
-
-            // Handle error if request fails
-
-            echo "API request failed.";
-
+        } catch (\Throwable $th) {
+            throw new \ErrorException("Erreur lors de la récupération de la carte aleatoire : " . $th->getMessage());
         }
     }
     /* **************** Cartes et présentation Cartes *************** */
     public function presentation()
     {
         return [
-            "view" => VIEW_DIR . "cards/cartes/presentation.php",
+            "view" => VIEW_DIR . "cards/cartes/presentation.html.php",
         ];
     }
 
     public function typeCard()
     {
-        // API endpoint URL
+        try {
+            $normal = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=normal%20monster&num=1&offset=0&format=tcg&sort=level");
+            $normal_tuner_monster = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=normal%20tuner%20monster&num=1&offset=0&format=tcg&sort=level");
+            $effet = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=effect%20monster&num=1&offset=0&format=tcg&sort=level");
+            $flip_effect_monster = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=flip%20effect%20monster&num=1&offset=0&format=tcg&sort=level");
+            $tuner_monster = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=tuner%20monster&num=1&offset=0&format=tcg&sort=level");
+            $pendule_normal = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=pendulum%20normal%20monster&num=1&offset=0&format=tcg&sort=level");
+            $pendule_effet = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=pendulum%20effect%20monster&num=1&offset=0&format=tcg&sort=level");
+            $pendule_flip_monster = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=pendulum%20flip%20effect%20monster&num=1&offset=0&format=tcg&sort=level");
+            $pendulum_tuner_monster = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=pendulum%20tuner%20effect%20monster&num=1&offset=0&format=tcg&sort=level");
+            $gemini_monster = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=gemini%20monster&num=1&offset=0&format=tcg&sort=level");
+            $spirit_monster = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spirit%20monster&num=1&offset=0&format=tcg&sort=level");
+            $toon_monster = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=toon%20monster&num=1&offset=0&format=tcg&sort=level");
+            $union_effect_monster = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=union%20effect%20monster&num=1&offset=0&format=tcg&sort=level");
+            $rituel = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=ritual%20monster&num=1&offset=0&format=tcg&sort=level");
+            $rituel_effet = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=ritual%20effect%20monster&num=1&offset=0&format=tcg&sort=level");
+            $magie = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=normal&num=1&offset=0&format=tcg&sort=id");
+            $magie_continue = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=continuous&num=1&offset=0&format=tcg&sort=id");
+            $magie_rituel = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=ritual&num=1&offset=0&format=tcg&sort=id");
+            $magie_terrain = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=field&num=1&offset=0&format=tcg&sort=id");
+            $magie_rapide = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=quick-play&num=1&offset=0&format=tcg&sort=id");
+            $magie_equipement = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=equip&num=1&offset=0&format=tcg&sort=id");
+            $piege = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=trap%20card&race=normal&num=1&offset=0&format=tcg&sort=id");
+            $piege_continue = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=trap%20card&race=continuous&num=1&offset=0&format=tcg&sort=id");
+            $piege_contre = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=trap%20card&race=counter&num=1&offset=0&format=tcg&sort=id");
+            // Monstre Spécial : Extra Deck
+            $fusion = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=fusion%20monster&num=1&offset=0&format=tcg&sort=level");
+            $pendulum_fusion_monster = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=pendulum%20effect%20fusion%20monster&num=1&offset=0&format=tcg&sort=level");
+            $synchro = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=synchro%20monster&num=1&offset=0&format=tcg&sort=level");
+            $pendulum_synchro_monster = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=synchro%20pendulum%20effect%20monster&num=1&offset=0&format=tcg&sort=level");
+            $xyz = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=xyz%20monster&num=1&offset=0&format=tcg&sort=level");
+            $pendulum_xyz_monster = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=xyz%20pendulum%20effect%20monster&num=1&offset=0&format=tcg&sort=level");
+            $lien = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=link%20monster&num=1&offset=0&format=tcg&sort=id");
 
-        $normal = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=normal%20monster&num=1&offset=0&sort=id";
-        $normal_tuner_monster = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=normal%20tuner%20monster&num=1&offset=0&sort=id";
-        $effet = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=effect%20monster&num=1&offset=0&sort=id";
-        $flip_effect_monster = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=flip%20effect%20monster&num=1&offset=0&sort=id";
-        $tuner_monster = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=tuner%20monster&num=1&offset=0&sort=id";
-        $pendule_normal = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=pendulum%20normal%20monster&num=1&offset=0&sort=id";
-        $pendule_effet = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=pendulum%20effect%20monster&num=1&offset=0&sort=id";
-        $pendule_flip_monster = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=pendulum%20flip%20effect%20monster&num=1&offset=0&sort=id";
-        $pendulum_tuner_monster = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=pendulum%20tuner%20effect%20monster&num=1&offset=0&sort=id";
-        $gemini_monster = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=gemini%20monster&num=1&offset=0&sort=id";
-        $spirit_monster = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spirit%20monster&num=1&offset=0&sort=id";
-        $toon_monster = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=toon%20monster&num=1&offset=0&sort=id";
-        $union_effect_monster = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=union%20effect%20monster&num=1&offset=0&sort=id";
-        $rituel = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=ritual%20monster&num=1&offset=0&sort=id";
-        $rituel_effet = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=ritual%20effect%20monster&num=1&offset=0&sort=id";
-        $magie = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=normal&num=1&offset=0&sort=id";
-        $magie_continue = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=continuous&num=1&offset=0&sort=id";
-        $magie_rituel = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=ritual&num=1&offset=0&sort=id";
-        $magie_terrain = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=field&num=1&offset=0&sort=id";
-        $magie_rapide = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=quick-play&num=1&offset=0&sort=id";
-        $magie_equipement = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=equip&num=1&offset=0&sort=id";
-        $piege = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=trap%20card&race=normal&num=1&offset=0&sort=id";
-        $piege_continue = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=trap%20card&race=continuous&num=1&offset=0&sort=id";
-        $piege_contre = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=trap%20card&race=counter&num=1&offset=0&sort=id";
-        $fusion = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=fusion%20monster&num=1&offset=0&sort=id";
-        $pendulum_fusion_monster = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=pendulum%20effect%20fusion%20monster&num=1&offset=0&sort=id";
-        $synchro = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=synchro%20monster&num=1&offset=0&sort=id";
-        $pendulum_synchro_monster = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=synchro%20pendulum%20effect%20monster&num=1&offset=0&sort=id";
-        $xyz = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=xyz%20monster&num=1&offset=0&sort=id";
-        $pendulum_xyz_monster = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=xyz%20pendulum%20effect%20monster&num=1&offset=0&sort=id";
-        $lien = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=link%20monster&num=1&offset=0&sort=id";
-
-        // Send GET request to the API
-        // Monstres, Magie et Piège : Main Deck
-        $normal = file_get_contents($normal);
-        $normal_tuner_monster = file_get_contents($normal_tuner_monster);
-        $effet = file_get_contents($effet);
-        $flip_effect_monster = file_get_contents($flip_effect_monster);
-        $tuner_monster = file_get_contents($tuner_monster);
-        $pendule_normal = file_get_contents($pendule_normal);
-        $pendule_effet = file_get_contents($pendule_effet);
-        $pendule_flip_monster = file_get_contents($pendule_flip_monster);
-        $pendulum_tuner_monster = file_get_contents($pendulum_tuner_monster);
-        $gemini_monster = file_get_contents($gemini_monster);
-        $spirit_monster = file_get_contents($spirit_monster);
-        $toon_monster = file_get_contents($toon_monster);
-        $union_effect_monster = file_get_contents($union_effect_monster);
-        $rituel = file_get_contents($rituel);
-        $rituel_effet = file_get_contents($rituel_effet);
-        $magie = file_get_contents($magie);
-        $magie_continue = file_get_contents($magie_continue);
-        $magie_rituel = file_get_contents($magie_rituel);
-        $magie_terrain = file_get_contents($magie_terrain);
-        $magie_rapide = file_get_contents($magie_rapide);
-        $magie_equipement = file_get_contents($magie_equipement);
-        $piege = file_get_contents($piege);
-        $piege_continue = file_get_contents($piege_continue);
-        $piege_contre = file_get_contents($piege_contre);
-        // Monstre Spécial : Extra Deck
-        $fusion = file_get_contents($fusion);
-        $pendulum_fusion_monster = file_get_contents($pendulum_fusion_monster);
-        $synchro = file_get_contents($synchro);
-        $pendulum_synchro_monster = file_get_contents($pendulum_synchro_monster);
-        $xyz = file_get_contents($xyz);
-        $pendulum_xyz_monster = file_get_contents($pendulum_xyz_monster);
-        $lien = file_get_contents($lien);
-
-        // Handle the response
-        if ($normal && $normal_tuner_monster && $effet && $flip_effect_monster && $tuner_monster && $pendule_normal && $pendule_effet && $pendule_flip_monster && $pendulum_tuner_monster && $gemini_monster && $spirit_monster && $toon_monster && $union_effect_monster && $rituel && $rituel_effet && $magie && $magie_continue && $magie_rituel && $magie_terrain && $magie_rapide && $magie_equipement && $piege && $piege_continue && $piege_contre && $fusion && $pendulum_fusion_monster && $synchro && $pendulum_synchro_monster && $xyz && $pendulum_xyz_monster && $lien) {
-            // Convert JSON response to PHP array
-            // Monstres, Magie et Piège : Main Deck
             $normal = json_decode($normal, true);
             $normal_tuner_monster = json_decode($normal_tuner_monster, true);
             $effet = json_decode($effet, true);
@@ -169,7 +111,7 @@ class CardController extends AbstractController implements ControllerInterface
             $lien = json_decode($lien, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/typeCard.php",
+                "view" => VIEW_DIR . "cards/cartes/typeCard.html.php",
                 // Monstres, Magie et Piège : Main Deck
                 'normal' => $normal,
                 'normal_tuner_monster' => $normal_tuner_monster,
@@ -203,397 +145,212 @@ class CardController extends AbstractController implements ControllerInterface
                 'pendulum_xyz_monster' => $pendulum_xyz_monster,
                 'lien' => $lien,
             ];
-
-        } else {
-            // Handle error if request fails
-            echo "API request failed.";
+        } catch (\Throwable $th) {
+            echo "Une erreur s'est produite lors de la création des cartes : " . $th->getMessage();
+            throw new \ErrorException("Erreur lors de la création des cartes : " . $th->getMessage());
         }
     }
 
-    // public function searchCard()
-    // {
-    //     // API endpoint URL
-    //     $typeCard = filter_input(INPUT_GET, "type", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $archetypeCard = filter_input(INPUT_GET, "archetype", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $levelCard = filter_input(INPUT_GET, "level", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $raceCard = filter_input(INPUT_GET, "race", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $attributeCard = filter_input(INPUT_GET, "attribute", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $scaleCard = filter_input(INPUT_GET, "scale", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $linkValCard = filter_input(INPUT_GET, "linkval", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $nameCard = filter_input(INPUT_GET, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-    //     $type = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=$typeCard&sort=id";
-    //     $archetype = "https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=$archetypeCard&sort=id";
-    //     $level = "https://db.ygoprodeck.com/api/v7/cardinfo.php?level=$levelCard&sort=id";
-    //     $race = "https://db.ygoprodeck.com/api/v7/cardinfo.php?race=$raceCard&sort=id";
-    //     $attribute = "https://db.ygoprodeck.com/api/v7/cardinfo.php?attribute=$attributeCard&sort=id";
-    //     $scale = "https://db.ygoprodeck.com/api/v7/cardinfo.php?scale=$scaleCard&sort=id";
-    //     $linkval = "https://db.ygoprodeck.com/api/v7/cardinfo.php?link=$linkValCard&sort=id";
-    //     $name = "https://db.ygoprodeck.com/api/v7/cardinfo.php?name=$nameCard&sort=id";
-
-    //     // Send GET request to the API
-    //     // Monstres, Magie et Piège : Main Deck
-    //     $type = file_get_contents($type);
-    //     $archetype = file_get_contents($archetype);
-    //     $level = file_get_contents($level);
-    //     $race = file_get_contents($race);
-    //     $attribute = file_get_contents($attribute);
-    //     $scale = file_get_contents($scale);
-    //     $linkval = file_get_contents($linkval);
-    //     $name = file_get_contents($name);
-
-
-    //     // Handle the response
-    //     if ($type && $archetype && $level && $race && $attribute && $scale && $linkval && $name) {
-    //         // Convert JSON response to PHP array
-    //         $type = json_decode($type, true);
-    //         $archetype = json_decode($archetype, true);
-    //         $level = json_decode($level, true);
-    //         $race = json_decode($race, true);
-    //         $attribute = json_decode($attribute, true);
-    //         $scale = json_decode($scale, true);
-    //         $linkval = json_decode($linkval, true);
-    //         $name = json_decode($name, true);
-
-    //         return [
-    //             "view" => VIEW_DIR . "cards/cartes/searchCard.php",
-    //             'type' => $type,
-    //             'archetype' => $archetype,
-    //             'level' => $level,
-    //             'race' => $race,
-    //             'attribute' => $attribute,
-    //             'scale' => $scale,
-    //             'linkval' => $linkval,
-    //             'name' => $name,
-    //         ];
-
-    //     } else {
-    //         // Handle error if request fails
-    //         echo "API request failed.";
-    //     }
-    // }
     /* ***************** Détail des cartes *********** */
     public function detailCard()
     {
-        $cardId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+        try {
+            $cardId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
 
-        // URL de L'API
-        $card = "https://db.ygoprodeck.com/api/v7/cardinfo.php?id=$cardId";
+            $card = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?id=$cardId");
 
-        // Send GET request to the API
-        $card = file_get_contents($card);
-
-        // Handle the response
-        if ($card) {
-            // Convertis JSON en tableau PHP
             $card = json_decode($card, true);
 
             return
                 [
-                    "view" => VIEW_DIR . "cards/cartes/details/detailCard.php",
+                    "view" => VIEW_DIR . "cards/cartes/details/detailCard.html.php",
                     'card' => $card,
                 ];
-
-        } else {
-            // Handle error if request fails
-            echo "API request failed.";
+        } catch (\Throwable $th) {
+            throw new \ErrorException("Erreur lors de la création du détail de la carte : " . $th->getMessage());
         }
     }
-    public function detailType($typeCard)
+
+    public function detailType()
     {
-        $typeCard = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        try {
+            $typeCard = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        $type = "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=$typeCard&sort=level";
+            // Send GET request to the API
+            $type = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?type=$typeCard&sort=id&num=50&offset=0&format=tcg");
 
-        // Send GET request to the API
-        $type = file_get_contents($type);
-
-        // Handle the response
-        if ($type) {
-            // Convert JSON response to PHP array
             $type = json_decode($type, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailType.php",
+                "view" => VIEW_DIR . "cards/cartes/details/detailType.html.php",
                 'type' => $type,
             ];
-
-        } else {
-            // Handle error if request fails
-            echo "API request failed.";
+        } catch (\Throwable $th) {
+            throw new \ErrorException("Erreur lors de la création du détail du type de carte : " . $th->getMessage());
         }
     }
-    public function detailElement($elementCard)
+
+    public function detailAttribute()
     {
+        try {
+            $elementCard = filter_input(INPUT_GET, 'attribute', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            // Send GET request to the API
+            $element = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?attribute=$elementCard&sort=level&num=50&offset=0&format=tcg");
 
-        $elementCard = filter_input(INPUT_GET, 'attribute', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        // API endpoint URL
-
-        $element = "https://db.ygoprodeck.com/api/v7/cardinfo.php?attribute=$elementCard&sort=level";
-        // Send GET request to the API
-        $element = file_get_contents($element);
-
-
-        // Handle the response
-        if ($element) {
             // Convert JSON response to PHP array
             $element = json_decode($element, true);
-
-
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailElement.php",
+                "view" => VIEW_DIR . "cards/cartes/details/detailElement.html.php",
                 'element' => $element,
             ];
-
-        } else {
-            // Handle error if request fails
-            echo "API request failed.";
+        } catch (\Throwable $th) {
+            throw new \ErrorException("Erreur lors de la création du détail de l'attribut de carte : " . $th->getMessage());
         }
     }
-    public function detailRace($raceCard)
+
+    public function detailRace()
     {
-        $raceCard = filter_input(INPUT_GET, 'race', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        // API endpoint URL
-        $race = "https://db.ygoprodeck.com/api/v7/cardinfo.php?race=$raceCard&sort=level";
+        try {
+            $raceCard = filter_input(INPUT_GET, 'race', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
+            $race = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?race=$raceCard&sort=id&num=50&offset=0&format=tcg");
 
-        // Send GET request to the API
-        // Monstres, Magie et Piège : Main Deck
-        $race = file_get_contents($race);
-
-        // Handle the response
-        if ($race) {
-            // Convert JSON response to PHP array
-            // Monstres, Magie et Piège : Main Deck
             $race = json_decode($race, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailRace.php",
+                "view" => VIEW_DIR . "cards/cartes/details/detailRace.html.php",
                 // Monstres, Magie et Piège : Main Deck
                 'race' => $race,
 
             ];
-
-        } else {
-            // Handle error if request fails
-            echo "API request failed.";
+        } catch (\Throwable $th) {
+            throw new \ErrorException("Erreur lors de la création du détail de la race de carte : " . $th->getMessage());
         }
     }
-    public function detailLevel($levelCard)
+
+    public function detailLevel()
     {
-        $levelCard = filter_input(INPUT_GET, 'level', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        try {
+            $levelCard = filter_input(INPUT_GET, 'level', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        // API endpoint URL
+            $level = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?level=$levelCard&sort=id&num=50&offset=0&format=tcg");
 
-        $level = "https://db.ygoprodeck.com/api/v7/cardinfo.php?level=$levelCard&sort=id";
-
-        // Send GET request to the API
-        // Monstres, Magie et Piège : Main Deck
-        $level = file_get_contents($level);
-
-        // Handle the response
-        if ($level) {
-            // Convert JSON response to PHP array
-            // Monstres, Magie et Piège : Main Deck
             $level = json_decode($level, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailLevel.php",
+                "view" => VIEW_DIR . "cards/cartes/details/detailLevel.html.php",
                 // Monstres, Magie et Piège : Main Deck
                 'level' => $level,
             ];
-
-        } else {
-            // Handle error if request fails
+        } catch (\Throwable $th) {
             echo "API request failed.";
+            throw new \ErrorException("Erreur lors de la création du détail du niveau de carte : " . $th->getMessage());
         }
     }
-    public function detailLinkVal($linkCard)
+
+    public function detailLinkVal()
     {
-        $linkCard = filter_input(INPUT_GET, 'linkval', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        try {
+            $linkCard = filter_input(INPUT_GET, 'linkval', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        // API endpoint URL
+            $linkval = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?link=$linkCard&sort=id&num=50&offset=0&format=tcg");
 
-        $linkval = "https://db.ygoprodeck.com/api/v7/cardinfo.php?link=$linkCard&sort=id";
-
-        // Send GET request to the API
-        // Monstres, Magie et Piège : Main Deck
-        $linkval = file_get_contents($linkval);
-
-        // Handle the response
-        if ($linkval) {
-            // Convert JSON response to PHP array
-            // Monstres, Magie et Piège : Main Deck
             $linkval = json_decode($linkval, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailLinkVal.php",
-                // Monstres, Magie et Piège : Main Deck
+                "view" => VIEW_DIR . "cards/cartes/details/detailLinkVal.html.php",
                 'linkval' => $linkval,
             ];
-
-        } else {
-            // Handle error if request fails
-            echo "API request failed.";
+        } catch (\Throwable $th) {
+            throw new \ErrorException("Erreur lors de la création du détail du lien de carte : " . $th->getMessage());
         }
     }
-    public function detailLinkMarkers($linkMarkCard)
+
+    public function detailScale()
     {
-        $linkMarkers = filter_input(INPUT_GET, 'linkmarkers', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        try {
+            $scaleCard = filter_input(INPUT_GET, 'scale', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        // API endpoint URL
+            $scale = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?scale=$scaleCard&sort=level&num=50&offset=0&format=tcg");
 
-        $linkmarkers = "https://db.ygoprodeck.com/api/v7/cardinfo.php?linkmarker=$linkMarkers&sort=id";
-
-        // Send GET request to the API
-        // Monstres, Magie et Piège : Main Deck
-        $linkmarkers = file_get_contents($linkmarkers);
-
-        // Handle the response
-        if ($linkmarkers) {
-            // Convert JSON response to PHP array
-            // Monstres, Magie et Piège : Main Deck
-            $linkmarkers = json_decode($linkmarkers, true);
-
-            return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailLinkMarker.php",
-                // Monstres, Magie et Piège : Main Deck
-                'linkmarkers' => $linkmarkers,
-            ];
-
-        } else {
-            // Handle error if request fails
-            echo "API request failed.";
-        }
-    }
-    public function detailScale($scaleCard)
-    {
-        $scaleCard = filter_input(INPUT_GET, 'scale', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-        // API endpoint URL
-
-        $scale = "https://db.ygoprodeck.com/api/v7/cardinfo.php?scale=$scaleCard&sort=id";
-
-        // Send GET request to the API
-        // Monstres, Magie et Piège : Main Deck
-        $scale = file_get_contents($scale);
-
-        // Handle the response
-        if ($scale) {
-            // Convert JSON response to PHP array
-            // Monstres, Magie et Piège : Main Deck
             $scale = json_decode($scale, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailScale.php",
+                "view" => VIEW_DIR . "cards/cartes/details/detailScale.html.php",
                 // Monstres, Magie et Piège : Main Deck
                 'scale' => $scale,
             ];
-
-        } else {
-            // Handle error if request fails
-            echo "API request failed.";
+        } catch (\Throwable $th) {
+            throw new \ErrorException("Erreur lors de la création du détail de la race de carte : " . $th->getMessage());
         }
     }
-    public function detailArchetype()
+
+    public function detailArchetype($archetype)
     {
-        // API endpoint URL
+        try {
+            $archetype = filter_input(INPUT_GET, 'archetype', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        $archetype = filter_input(INPUT_GET, 'archetype', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            // Send GET request to the API
+            $archetype = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=$archetype&sort=id");
 
-        // API endpoint URL
-
-        $archetype = "https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=$archetype&sort=type";
-
-        // Send GET request to the API
-        $archetype = file_get_contents($archetype);
-
-        // Handle the response
-        if ($archetype) {
             // Convert JSON response to PHP array
             $archetype = json_decode($archetype, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailArchetype.php",
+                "view" => VIEW_DIR . "cards/cartes/details/detailArchetype.html.php",
                 'archetype' => $archetype,
             ];
-
-        } else {
-            // Handle error if request fails
-            echo "API request failed.";
+        } catch (\Throwable $th) {
+            throw new \ErrorException("Erreur lors de la récupération des détails de l'archétype : " . $th->getMessage());
         }
     }
-    public function detailAttack($attackCard)
+    public function detailAttack()
     {
-        // API endpoint URL
+        try {
+            $attackCard = filter_input(INPUT_GET, 'atk', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        $attackCard = filter_input(INPUT_GET, 'atk', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $attack = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?atk=$attackCard&sort=level&num=50&offset=0&format=tcg");
 
-        // API endpoint URL
-
-        $attack = "https://db.ygoprodeck.com/api/v7/cardinfo.php?atk=$attackCard&sort=type";
-
-        // Send GET request to the API
-        $attack = file_get_contents($attack);
-
-        // Handle the response
-        if ($attack) {
-            // Convert JSON response to PHP array
             $attack = json_decode($attack, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailAtk.php",
+                "view" => VIEW_DIR . "cards/cartes/details/detailAtk.html.php",
                 'attack' => $attack,
             ];
-
-        } else {
-            // Handle error if request fails
-            echo "API request failed.";
+        } catch (\Throwable $th) {
+            throw new \ErrorException("Erreur lors de la création du détail de l'attaque de carte : " . $th->getMessage());
         }
     }
-    public function detailDefense($defCard)
+    public function detailDefense()
     {
-        // API endpoint URL
+        try {
+            $defCard = filter_input(INPUT_GET, 'def', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        $defCard = filter_input(INPUT_GET, 'def', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $def = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?def=$defCard&sort=level&num=50&offset=0&format=tcg");
 
-        // API endpoint URL
-
-        $def = "https://db.ygoprodeck.com/api/v7/cardinfo.php?def=$defCard&sort=type";
-
-        // Send GET request to the API
-        // Monstres, Magie et Piège : Main Deck
-        $def = file_get_contents($def);
-
-        // Handle the response
-        if ($def) {
-            // Convert JSON response to PHP array
-            // Monstres, Magie et Piège : Main Deck
             $def = json_decode($def, true);
 
             return [
-                "view" => VIEW_DIR . "cards/cartes/details/detailDef.php",
+                "view" => VIEW_DIR . "cards/cartes/details/detailDef.html.php",
                 // Monstres, Magie et Piège : Main Deck
                 'defense' => $def,
             ];
-
-        } else {
-            // Handle error if request fails
-            echo "API request failed.";
+        } catch (\Throwable $th) {
+            throw new \ErrorException("Erreur lors de la création du détail de la defense de carte : " . $th->getMessage());
         }
     }
     /* ********************** Formats de duel ************ */
     public function typeOfDuel()
     {
         return [
-            "view" => VIEW_DIR . "cards/typeOfDuel.php",
+            "view" => VIEW_DIR . "cards/typeOfDuel.html.php",
         ];
     }
     /* ***********Decks********** */
     public function creatDeckForm()
     {
         return [
-            "view" => VIEW_DIR . "cards/deck/creatDeck.php",
+            "view" => VIEW_DIR . "cards/deck/creatDeck.html.php",
         ];
     }
     public function creatDeck($nom)
@@ -607,8 +364,7 @@ class CardController extends AbstractController implements ControllerInterface
 
             if ($deckName && $deckPresentation && $deckimg) {
                 $deckManager = new DeckManager();
-                if
-                (
+                if (
                     $deckManager->add([
                         "deckName" => $deckName,
                         "deckPresentation" => $deckPresentation,
@@ -617,19 +373,19 @@ class CardController extends AbstractController implements ControllerInterface
                     ])
                 ) {
                     return [
-                        "view" => VIEW_DIR . "cards/deck/creatDeck.php",
+                        "view" => VIEW_DIR . "cards/deck/creatDeck.html.php",
                     ];
                 }
             } else {
                 echo "<h1 style='color:red;'>Erreur d'Enregistrement !</h1>";
                 return [
-                    "view" => VIEW_DIR . "cards/deck/creatDeck.php",
+                    "view" => VIEW_DIR . "cards/deck/creatDeck.html.php",
                 ];
             }
         } else {
             echo "<h1 style='color:orange;'>Ces données n'ont pas été soumis !</h1>";
             return [
-                "view" => VIEW_DIR . "cards/deck/creatDeck.php",
+                "view" => VIEW_DIR . "cards/deck/creatDeck.html.php",
             ];
         }
     }
@@ -688,7 +444,7 @@ class CardController extends AbstractController implements ControllerInterface
     //     // $deckManager = new DeckManager();
     //     return
     //         [
-    //             "view" => VIEW_DIR . "cards/deck/detailDeck.php",
+    //             "view" => VIEW_DIR . "cards/deck/detailDeck.html.php",
     //             "data" =>
     //             [
     //                 "deck" => $deckManager->findOneById($deck->getId())
@@ -700,7 +456,7 @@ class CardController extends AbstractController implements ControllerInterface
         $deckManager = new DeckManager();
         return
             [
-                "view" => VIEW_DIR . "cards/deck/listDeck.php",
+                "view" => VIEW_DIR . "cards/deck/listDeck.html.php",
                 "data" =>
                 [
                     "decks" => $deckManager->findAllDeck()
@@ -725,7 +481,7 @@ class CardController extends AbstractController implements ControllerInterface
 
         //     return 
         //     [
-        //         "view" => VIEW_DIR . "cards/cartes/detailCard.php",
+        //         "view" => VIEW_DIR . "cards/cartes/detailCard.html.php",
         //         'card' => $card,
         //     ];
 
@@ -737,7 +493,7 @@ class CardController extends AbstractController implements ControllerInterface
         $deckManager = new DeckManager();
         return
             [
-                "view" => VIEW_DIR . "cards/deck/detailDeck.php",
+                "view" => VIEW_DIR . "cards/deck/detailDeck.html.php",
                 "data" =>
                 [
                     "decks" => $deckManager->findOneById($id),
@@ -750,7 +506,7 @@ class CardController extends AbstractController implements ControllerInterface
         $deckManager = new DeckManager();
         return
             [
-                "view" => VIEW_DIR . "cards/deck/note_Deck.php",
+                "view" => VIEW_DIR . "cards/deck/note_Deck.html.php",
                 // "data" =>
                 // [
                 //     "deck" => $deckManager->findOneById($id)
@@ -762,12 +518,11 @@ class CardController extends AbstractController implements ControllerInterface
         $deckManager = new DeckManager();
         return
             [
-                "view" => VIEW_DIR . "cards/deck/comment_Deck.php",
+                "view" => VIEW_DIR . "cards/deck/comment_Deck.html.php",
                 // "data" =>
                 // [
                 //     "deck" => $deckManager->findOneById($id)
                 // ]
             ];
     }
-
 }

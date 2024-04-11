@@ -17,47 +17,28 @@ class SecurityController extends AbstractController implements ControllerInterfa
 {
     public function index()
     {
-        $cardsEndpoint = "https://db.ygoprodeck.com/api/v7/cardinfo.php";
-
-        // Send GET request to the API
-        $cardsResponse = file_get_contents($cardsEndpoint);
-
-        // Handle the response
-
-        if ($cardsResponse) {
+        try {
+            // Send GET request to the API
+            $cardsResponse = file_get_contents("https://db.ygoprodeck.com/api/v7/randomcard.php");
 
             // Convert JSON response to PHP array
-            $cardsArray = json_decode($cardsResponse, true);
-
-            // Get the total number of available cards
-            $totalCards = count($cardsArray['data']);
-
-            // Generate a random index to select a card
-            $randomIndex = array_rand($cardsArray['data']);
-
-            // Retrieve the randomly selected card using the random index
-            $randomCard = $cardsArray['data'][$randomIndex];
+            $randomCard = json_decode($cardsResponse, true);
 
             return [
-                "view" => VIEW_DIR . "home.php",
+                "view" => VIEW_DIR . "home.html.php",
                 "data" => [
                     "card" => $randomCard,
                     // var_dump($randomCard),
                 ]
             ];
-
-        } else {
-
-            // Handle error if request fails
-
-            echo "API request failed.";
-
+        } catch (\Throwable $th) {
+            throw new \ErrorException("Erreur lors de la récupération de la carte aleatoire : " . $th->getMessage());
         }
     }
     public function registerForm()
     {
         return [
-            "view" => VIEW_DIR . "security/register.php",
+            "view" => VIEW_DIR . "security/register.html.php",
             "data" => null,
         ];
     }
@@ -73,7 +54,7 @@ class SecurityController extends AbstractController implements ControllerInterfa
             if ($username && $password && $email) {
                 if (($password == $confirmpassword) and strlen($password) >= 3) {
                     $manager = new UserManager();
-                    $user = $manager->findOneByPseudo($username);
+                    $user = $manager->findOneByEmail($email);
 
                     if (!$user) {
 
@@ -90,7 +71,7 @@ class SecurityController extends AbstractController implements ControllerInterfa
                             ])
                         ) {
                             return [
-                                "view" => VIEW_DIR . "home.php",
+                                "view" => VIEW_DIR . "home.html.php",
                             ];
                         }
                     }
@@ -98,20 +79,20 @@ class SecurityController extends AbstractController implements ControllerInterfa
             } else {
                 echo "<h1 style='color:red;'>Erreur d'Enregistrement !</h1>";
                 return [
-                    "view" => VIEW_DIR . "security/register.php",
+                    "view" => VIEW_DIR . "security/register.html.php",
                 ];
             }
         } else {
             echo "<h1 style='color:orange;'>Ces données n'ont pas été soumis !</h1>";
             return [
-                "view" => VIEW_DIR . "security/register.php",
+                "view" => VIEW_DIR . "security/register.html.php",
             ];
         }
     }
     public function loginForm()
     {
         return [
-            "view" => VIEW_DIR . "security/login.php",
+            "view" => VIEW_DIR . "security/login.html.php",
             "data" => null,
         ];
     }
@@ -119,13 +100,13 @@ class SecurityController extends AbstractController implements ControllerInterfa
     {
         if (!empty($_POST)) {
 
-            $username = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            if ($username && $password) {
+            if ($email && $password) {
 
                 $manager = new UserManager();
-                $user = $manager->findOneByPseudo($username);
+                $user = $manager->findOneByEmail($email);
 
                 $pass = $user->getPassword();
 
@@ -136,7 +117,7 @@ class SecurityController extends AbstractController implements ControllerInterfa
                         header('Location:index.php?ctrl=security&action=index');
                     } else {
                         return [
-                            "view" => VIEW_DIR . "security/login.php",
+                            "view" => VIEW_DIR . "security/login.html.php",
                             "data" => null,
                         ];
                     }
@@ -155,7 +136,7 @@ class SecurityController extends AbstractController implements ControllerInterfa
     {
 
         return [
-            "view" => VIEW_DIR . "security/deleteAccount.php",
+            "view" => VIEW_DIR . "security/deleteAccount.html.php",
             "data" => null,
         ];
 
@@ -169,7 +150,7 @@ class SecurityController extends AbstractController implements ControllerInterfa
             unset($_SESSION['user']);
             $this->redirectTo("security", "index");
             return [
-                "view" => VIEW_DIR . "security/deleteAccount.php",
+                "view" => VIEW_DIR . "security/deleteAccount.html.php",
             ];
         }
     }

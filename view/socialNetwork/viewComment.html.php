@@ -230,4 +230,4 @@ if (Core\Session::isAdmin()) {
 $title = "Blog";
 
 
-include_once("addComment.php");
+include_once("addComment.html.php");

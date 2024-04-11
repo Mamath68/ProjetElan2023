@@ -11,7 +11,7 @@
         <form action="index.php?ctrl=security&action=login" method="post" enctype="multipart">
 
             <div class="mb-3">
-                <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo" required>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
             </div>
             <div class="mb-3 text-center">
                 <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe"

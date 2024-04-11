@@ -13,14 +13,7 @@ if (Core\Session::isAdmin()) {
                                                   Publication
       ***********************************************************************************************************/
       ?>
-
-      <div class="main2">
-            <button class="openbtn" onclick="openNav()">☰</button>
-            <h1 class="p-3 primetitle text-light">Mur de Publication</h1>
-      </div>
-      <div class="main3">
-            <h1 class="p-3 primetitle text-light">Mur de Publication</h1>
-      </div>
+            <h1 class="p-3 text-light">Mur de Publication</h1>
       <?php
       if (!empty($publications)) {
             foreach ($publications as $publication) {
@@ -164,4 +157,4 @@ if (Core\Session::isAdmin()) {
 }
 
 $title = "Blog";
-include_once("addPublication.php");
+include_once("addPublication.html.php");

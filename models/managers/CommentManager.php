@@ -18,7 +18,7 @@ class CommentManager extends Manager
 
     public function findOneById($id)
     {
-        $sql = "SELECT c.id_comment, c.body, c.img, c.commentDate
+        $sql = "SELECT c.id_comment, c.body, c.image, c.commentDate
                 FROM " . $this->tableName . " c
                 INNER JOIN user u 
                 ON u.id_user = c.user_id
@@ -33,7 +33,7 @@ class CommentManager extends Manager
 
     public function findCommentByPublication($id)
     {
-        $sql = "SELECT c.id_comment, c.body, c.img, c.commentDate
+        $sql = "SELECT c.id_comment, c.body, c.image, c.commentDate
         FROM " . $this->tableName . " c
         INNER JOIN publication p 
         ON p.id_publication = c.publication_id
