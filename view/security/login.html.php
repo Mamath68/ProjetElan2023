@@ -1,7 +1,5 @@
-<div class="main2">
-    <button class="openbtn" onclick="openNav()">☰</button>
-    <h1 class="p-3 primetitle text-light">Se Connecter</h1>
-</div>
+<h1 class="p-3 text-light">Se Connecter</h1>
+
 <div class="login">
     <div class="logos">
         <img src="././public/img/fanart.jpg" alt="img">
@@ -14,8 +12,7 @@
                 <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
             </div>
             <div class="mb-3 text-center">
-                <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe"
-                    required>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe" required>
             </div>
             <button type="submit" class="btn btn-success reject3">Se connecter</button>
         </form>

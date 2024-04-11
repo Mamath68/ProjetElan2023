@@ -1,15 +1,10 @@
 <?php
 
-// Ouvre le namespace Controllers
 namespace Controllers;
 
-use App\Session;
 use App\AbstractController;
 use App\ControllerInterface;
-use Models\Managers\DeckManager;
 
-
-// class CardController hérite de la classe AbstractController et implémente ControllerInterface.
 class CardController extends AbstractController implements ControllerInterface
 {
 
@@ -227,6 +222,26 @@ class CardController extends AbstractController implements ControllerInterface
             throw new \ErrorException("Erreur lors de la création du détail de la race de carte : " . $th->getMessage());
         }
     }
+    public function detailRaceType()
+    {
+        try {
+            $raceCard = filter_input(INPUT_GET, 'race', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $typeCard = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            $racetype = file_get_contents("https://db.ygoprodeck.com/api/v7/cardinfo.php?race=$raceCard&type=$typeCard&sort=id&num=50&offset=0&format=tcg");
+
+            $racetype = json_decode($racetype, true);
+
+            return [
+                "view" => VIEW_DIR . "cards/cartes/details/detailRaceType.html.php",
+                // Monstres, Magie et Piège : Main Deck
+                'racetype' => $racetype,
+
+            ];
+        } catch (\Throwable $th) {
+            throw new \ErrorException("Erreur lors de la création du détail de la race de carte : " . $th->getMessage());
+        }
+    }
 
     public function detailLevel()
     {
@@ -346,183 +361,13 @@ class CardController extends AbstractController implements ControllerInterface
             "view" => VIEW_DIR . "cards/typeOfDuel.html.php",
         ];
     }
-    /* ***********Decks********** */
-    public function creatDeckForm()
+    /* ***********Recherche********** */
+
+    public function searchForm()
     {
         return [
-            "view" => VIEW_DIR . "cards/deck/creatDeck.html.php",
+            "view" => VIEW_DIR . "cards/search/SearchCard.html.php",
         ];
     }
-    public function creatDeck($nom)
-    {
-        if (!empty($_POST)) {
-            $deckName = filter_input(INPUT_POST, "deckName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $deckPresentation = filter_input(INPUT_POST, "deckPresentation", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $deckimg = filter_input(INPUT_POST, "imgDeck", FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
-            $user = Session::getUser()->getId();
-
-
-            if ($deckName && $deckPresentation && $deckimg) {
-                $deckManager = new DeckManager();
-                if (
-                    $deckManager->add([
-                        "deckName" => $deckName,
-                        "deckPresentation" => $deckPresentation,
-                        "imgDeck" => $deckimg,
-                        "user_id" => $user,
-                    ])
-                ) {
-                    return [
-                        "view" => VIEW_DIR . "cards/deck/creatDeck.html.php",
-                    ];
-                }
-            } else {
-                echo "<h1 style='color:red;'>Erreur d'Enregistrement !</h1>";
-                return [
-                    "view" => VIEW_DIR . "cards/deck/creatDeck.html.php",
-                ];
-            }
-        } else {
-            echo "<h1 style='color:orange;'>Ces données n'ont pas été soumis !</h1>";
-            return [
-                "view" => VIEW_DIR . "cards/deck/creatDeck.html.php",
-            ];
-        }
-    }
-    // public function completeDeck()
-    // {
-    //     // Exemple de lien API de YGOPRO pour obtenir les détails d'une carte spécifique
-    //     // $nomCarte = $_GET['name'];
-    //     $nomCarte = filter_input(INPUT_GET, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //     $idDeck = filter_input(INPUT_GET, "idDeck", FILTER_SANITIZE_NUMBER_INT);
-
-    //     // API endpoint URL
-    //     $card = "https://db.ygoprodeck.com/api/v7/cardinfo.php?&name=$nomCarte";
-
-    //     // Effectuer une requête pour récupérer les données de la carte depuis l'API
-    //     $data = file_get_contents($card);
-    //     $carte = json_decode($data, true);
-
-    //     // // Extraire les informations nécessaires de la carte
-    //     // $cardName = $carte['name'];
-    //     // $cardType = $carte['type'];
-    //     // $cardImg = $carte['card_images'];
-    //     // // ...
-
-    //     // // Ajouter les informations de la carte dans le tableau JSON $deck
-    //     // $deck[] = array(
-    //     //     'name' => $cardName,
-    //     //     'type' => $cardType,
-    //     //     'image' => $cardImg,
-    //     //     // ...
-    //     // );
-
-    //     // // Répéter les étapes précédentes pour chaque carte que vous souhaitez ajouter au deck
-
-    //     // // Afficher le contenu final du tableau JSON $deck
-    //     // echo json_encode($deck);
-
-    //     // récupération du deck actuel
-    //     $deckManager = new DeckManager();
-    //     $deck = $deckManager->findOneById($idDeck);
-
-    //     // // récupération des cartes du deck (qui sont en JSON)
-    //     $cartes = json_decode($deck->getCards(), true);
-
-    //     // ajout de la carte aux cartes existantes
-    //     $cartes[] = $carte;
-
-    //     // transformation du tableau indexé des cartes en JSON
-    //     $cartesJson = json_encode($cartes);
-
-    //     // mise à jour du deck, en lui donnant ses cartes
-    //     $deck->setCards($cartesJson);
-
-    //     // sauvegarde dans la BDD
-    //     $deckManager->update($deck);
-
-    //     // $deckManager = new DeckManager();
-    //     return
-    //         [
-    //             "view" => VIEW_DIR . "cards/deck/detailDeck.html.php",
-    //             "data" =>
-    //             [
-    //                 "deck" => $deckManager->findOneById($deck->getId())
-    //             ]
-    //         ];
-    // }
-    public function listDeck()
-    {
-        $deckManager = new DeckManager();
-        return
-            [
-                "view" => VIEW_DIR . "cards/deck/listDeck.html.php",
-                "data" =>
-                [
-                    "decks" => $deckManager->findAllDeck()
-                ]
-            ];
-    }
-    public function detailDeck($id /*,$nom*/)
-    {
-        // $nom = $_GET['name'];
-
-        // // API endpoint URL
-        // $card = "https://db.ygoprodeck.com/api/v7/cardinfo.php? &name=$nom";
-
-        // // Send GET request to the API
-        // $card = file_get_contents($card);
-
-        // // Handle the response
-        // if ($card) 
-        // {
-        //     // Convert JSON response to PHP array
-        //     $card = json_decode($card, true);
-
-        //     return 
-        //     [
-        //         "view" => VIEW_DIR . "cards/cartes/detailCard.html.php",
-        //         'card' => $card,
-        //     ];
-
-        // } else {
-        //     // Handle error if request fails
-        //     echo "API request failed.";
-        // }
-
-        $deckManager = new DeckManager();
-        return
-            [
-                "view" => VIEW_DIR . "cards/deck/detailDeck.html.php",
-                "data" =>
-                [
-                    "decks" => $deckManager->findOneById($id),
-                ]
-            ];
-    }
-    public function noteDeck($id)
-    {
-
-        $deckManager = new DeckManager();
-        return
-            [
-                "view" => VIEW_DIR . "cards/deck/note_Deck.html.php",
-                // "data" =>
-                // [
-                //     "deck" => $deckManager->findOneById($id)
-                // ]
-            ];
-    }
-    public function commentDeck($id)
-    {
-        $deckManager = new DeckManager();
-        return
-            [
-                "view" => VIEW_DIR . "cards/deck/comment_Deck.html.php",
-                // "data" =>
-                // [
-                //     "deck" => $deckManager->findOneById($id)
-                // ]
-            ];
-    }
+    
 }

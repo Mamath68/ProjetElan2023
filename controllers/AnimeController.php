@@ -1,6 +1,5 @@
 <?php
 
-// Ouvre le namespace Controllers
 namespace Controllers;
 
 use App\AbstractController;

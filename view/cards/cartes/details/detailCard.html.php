@@ -26,7 +26,7 @@ if ($result['card']['data']) {
                             </span>
                             <span class="card-data-cost card-data-subheader">
                                 <i class="fa-solid fa-book"></i>
-                                <a href="#">
+                                <a href="index.php?ctrl=card&action=detailRaceType&race=<?= $card['race'] ?>&type=<?= $card['type'] ?>" target="_blank">
                                     <?= $card['race'] . ' ' . $card['type'] ?>
                                 </a>
                             </span>

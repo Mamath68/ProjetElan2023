@@ -3,13 +3,7 @@
 $users = $result["data"]['users'];
 ?>
 
-<div class="main2">
-  <button class="openbtn" onclick="openNav()">☰</button>
-  <h1 class="p-3 primetitle text-light">Liste des Utilisateurs</h1>
-</div>
-<div class="main3">
-  <h1 class="p-3 primetitle text-light">Liste des Utilisateurs</h1>
-</div>
+<h1 class="p-3 text-light">Liste des Utilisateurs</h1>
 <div class="container text-center">
   <table class="table users">
     <thead>
@@ -20,22 +14,30 @@ $users = $result["data"]['users'];
       </tr>
     </thead>
     <?php
-    foreach ($users as $user) {
-      ?>
-      <tbody>
-        <tr>
-          <td><img src="public/img/<?= $user->getAvatar() ?>" alt="Avatar"></td>
-          <td><a href="index.php?ctrl=home&action=publicUser&id=<?=$user->getId()?>">
-              <?= $user->getPseudo() ?>
-            </a></td>
-          <td>
-            <?= $user->getRegisterDate() ?>
-          </td>
-        </tr>
-        <?php
-    }
+    if ($result["data"]["users"]) {
+      foreach ($users as $user) {
     ?>
-    </tbody>
+        <tbody>
+          <tr>
+            <td><img src="public/img/<?= $user->getAvatar() ?>" alt="Avatar"></td>
+            <td><a href="index.php?ctrl=home&action=publicUser&id=<?= $user->getId() ?>">
+                <?= $user->getPseudo() ?>
+              </a></td>
+            <td>
+              <?= $user->getRegisterDate() ?>
+            </td>
+          </tr>
+        <?php
+      }
+    } else {
+        ?>
+        <tr>
+          <td colspan="3">Aucun utilisateur</td>
+        </tr>
+      <?php
+    }
+      ?>
+        </tbody>
   </table>
 </div>
 <?php

@@ -1,14 +1,8 @@
-<div class="main2">
-    <button class="openbtn" onclick="openNav()">☰</button>
-    <h1 class="p-3 primetitle text-light">
+
+    <h1 class="p-3 text-light">
         <?= App\Session::getUser()->getPseudo() ?>
     </h1>
-</div>
-<div class="main3">
-    <h1 class="p-3 primetitle text-light">
-        <?= App\Session::getUser()->getPseudo() ?>
-    </h1>
-</div>
+
 <?php
 if (App\Session::isAdmin()) {
 ?>
@@ -57,6 +51,6 @@ if (App\Session::isAdmin()) {
     </div>
 
 <?php }
-$title = "Mon Profil Utilisateur";
+$title = "Profil de" . " " . App\Session::getUser()->getPseudo();
 
 ?>

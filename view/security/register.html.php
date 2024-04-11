@@ -1,7 +1,4 @@
-<div class="main2">
-    <button class="openbtn" onclick="openNav()">☰</button>
-    <h1 class="p-3 primetitle text-light">S'enregister</h1>
-</div>
+<h1 class="p-3 primetitle text-light">S'enregister</h1>
 
 <div class="register">
     <div class="logos">
@@ -20,12 +17,10 @@
                 <input type="file" name="avatar" class="form-control" placeholder="Insert Your Avatar">
             </div>
             <div class="mb-3">
-                <input type="password" name="password" id="password" placeholder="Mot de passe" class="form-control"
-                    required>
+                <input type="password" name="password" id="password" placeholder="Mot de passe" class="form-control" required>
             </div>
             <div class="mb-3">
-                <input type="password" name="confirmpassword" id="password" placeholder="Confirmer Mot de passe"
-                    class="form-control" required>
+                <input type="password" name="confirmpassword" id="password" placeholder="Confirmer Mot de passe" class="form-control" required>
             </div>
             <button type="submit" class="btn btn-success">Enregistrer</button>
         </form>
