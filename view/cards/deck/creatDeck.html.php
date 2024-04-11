@@ -7,8 +7,8 @@
 </div>
 <?php
 
-if (Core\Session::isAdmin()) {
-    ?>
+if (App\Session::isAdmin()) {
+?>
     <div class="container text-center addpubli">
         <form action="index.php?ctrl=card&action=creatDeck" method="post" enctype="multipart">
 
@@ -19,16 +19,15 @@ if (Core\Session::isAdmin()) {
                 <input type="file" name="imgDeck" class="form-control" id="inputGroupFile02">
             </div>
             <div class="input-group mb-3">
-                <textarea class="form-control" name="deckPresentation" aria-label="Description du deck"
-                    placeholder="Description du deck"></textarea>
+                <textarea class="form-control" name="deckPresentation" aria-label="Description du deck" placeholder="Description du deck"></textarea>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Creer votre deck</button>
         </form>
     </div>
-    <?php
+<?php
 
-} elseif (Core\Session::getUser()) {
-    ?>
+} elseif (App\Session::getUser()) {
+?>
     <div class="container text-center addpubli">
         <form action="index.php?ctrl=card&action=creatDeck" method="post" enctype="multipart">
 
@@ -39,17 +38,16 @@ if (Core\Session::isAdmin()) {
                 <input type="file" name="imgDeck" class="form-control" id="inputGroupFile02">
             </div>
             <div class="input-group mb-3">
-                <textarea class="form-control" name="deckPresentation" aria-label="Description du deck"
-                    placeholder="Description du deck"></textarea>
+                <textarea class="form-control" name="deckPresentation" aria-label="Description du deck" placeholder="Description du deck"></textarea>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Creer votre deck</button>
         </form>
     </div>
-    <?php
+<?php
 } else {
-    ?>
+?>
     <h2>Si vous voulez Creer un deck, Connectez Vous!</h2>
-    <?php
+<?php
 }
 
 $title = "Création d'un deck";

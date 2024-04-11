@@ -3,9 +3,8 @@
 // Ouvre le namespace Controllers
 namespace Controllers;
 
-use Core\Session;
-use Core\AbstractController;
-use Core\ControllerInterface;
+use App\AbstractController;
+use App\ControllerInterface;
 use Models\Managers\MangasManager;
 
 // use Models\Managers\AuteurManager;
@@ -54,7 +53,5 @@ class MangasController extends AbstractController implements ControllerInterface
                 "mangas" => $mangasManager->findOneById($id),
             ]
         ];
-
     }
-
 }

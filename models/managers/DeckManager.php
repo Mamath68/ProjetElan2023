@@ -2,8 +2,8 @@
 
 namespace Models\Managers;
 
-use Core\Manager;
-use Core\DAO;
+use App\Manager;
+use App\DAO;
 
 class DeckManager extends Manager
 {
@@ -41,7 +41,8 @@ class DeckManager extends Manager
         );
     }
 
-    public function update($deck){
+    public function update($deck)
+    {
         $sql = "UPDATE " . $this->tableName . "
                 SET
                     deckName = :deckName,
@@ -52,15 +53,14 @@ class DeckManager extends Manager
                     id_deck = :id_deck
                 ";
 
-                $params = [
-                    'id_deck' => $deck->getId(),
-                    'deckName' => $deck->getName(),
-                    'deckPresentation' => $deck->getPresentation(),
-                    'imgDeck' => $deck->getImgDeck(),
-                    'cards' => $deck->getCards()
-                ];
+        $params = [
+            'id_deck' => $deck->getId(),
+            'deckName' => $deck->getName(),
+            'deckPresentation' => $deck->getPresentation(),
+            'imgDeck' => $deck->getImgDeck(),
+            'cards' => $deck->getCards()
+        ];
 
         return DAO::update($sql, $params);
     }
-
 }

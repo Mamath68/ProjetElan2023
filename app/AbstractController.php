@@ -1,6 +1,6 @@
 <?php
-// J'ouvre le namspace Core
-namespace Core;
+// J'ouvre le namspace App
+namespace App;
 
 // j'ouvre la classe abstaite, AbstractController
 abstract class AbstractController
@@ -9,7 +9,7 @@ abstract class AbstractController
     public function index()
     {
         return [
-            "view" => VIEW_DIR . "home.php",
+            "view" => VIEW_DIR . "home.html.php",
             "data" => null,
         ];
     }
@@ -24,14 +24,12 @@ abstract class AbstractController
             $url .= $action ? "&action=" . $action : "";
 
             $url .= $id ? "&id=" . $id : "";
-
         } else
             $url = "/";
 
         header("Location: $url");
 
         die();
-
     }
     // Fonction imposant une restriction au role donnée.
     public function restrictTo($role)
@@ -44,5 +42,4 @@ abstract class AbstractController
         // retourne, rien du tout, du moins a première vue.
         return;
     }
-
 }

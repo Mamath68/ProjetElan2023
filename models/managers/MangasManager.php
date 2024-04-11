@@ -2,8 +2,8 @@
 
 namespace Models\Managers;
 
-use Core\Manager;
-use Core\DAO;
+use App\Manager;
+use App\DAO;
 
 class MangasManager extends Manager
 {

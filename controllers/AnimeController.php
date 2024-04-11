@@ -3,9 +3,8 @@
 // Ouvre le namespace Controllers
 namespace Controllers;
 
-use Core\Session;
-use Core\AbstractController;
-use Core\ControllerInterface;
+use App\AbstractController;
+use App\ControllerInterface;
 use Models\Managers\AnimeManager;
 
 
@@ -53,7 +52,5 @@ class AnimeController extends AbstractController implements ControllerInterface
                 "animes" => $animeManager->findOneById($id),
             ]
         ];
-
     }
-
 }

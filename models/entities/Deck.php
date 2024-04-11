@@ -2,7 +2,7 @@
 
 namespace Models\Entities;
 
-use Core\Entity;
+use App\Entity;
 
 final class Deck extends Entity
 {

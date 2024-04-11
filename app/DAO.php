@@ -1,5 +1,6 @@
 <?php
-namespace Core;
+
+namespace App;
 
 // /**
 //  * Classe d'accès aux données de la BDD, abstraite
@@ -34,17 +35,17 @@ abstract class DAO
             self::$dbuser,
             self::$dbpass,
             array(
-                    // regle les caractère en utf8
+                // regle les caractère en utf8
                 \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'",
-                    // parametre les annonce d'erreurs
+                // parametre les annonce d'erreurs
                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-                    // regle les methode de recupération des données
+                // regle les methode de recupération des données
                 \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC
             )
         );
     }
     // début du CRUD
-// Create, insert into, sert a ajouter, inserer dans la base de donnée des informations.
+    // Create, insert into, sert a ajouter, inserer dans la base de donnée des informations.
     public static function insert($sql)
     {
         try {
@@ -91,7 +92,6 @@ abstract class DAO
 
             //on renvoie l'état du statement après exécution (true ou false)
             return $stmt->execute($params);
-
         } catch (\Exception $e) {
 
             echo $e->getMessage();
@@ -105,12 +105,10 @@ abstract class DAO
 
             //on renvoie l'état du statement après exécution (true ou false)
             return $stmt->execute($params);
-
         } catch (\Exception $e) {
             echo $sql;
             echo $e->getMessage();
             die();
         }
     }
-
 }

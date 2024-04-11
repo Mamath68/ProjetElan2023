@@ -7,11 +7,11 @@
 </div>
 <?php
 
-if (Core\Session::isAdmin()) {
+if (App\Session::isAdmin()) {
 
     $decks = $result['data']['decks'];
     foreach ($decks as $deck) {
-        ?>
+?>
         <div class="card text-center deck">
             <img src="public/img/<?= $deck->getImgDeck() ?>" class="card-img-top" alt="imageDeck">
             <div class="card-body">
@@ -25,59 +25,59 @@ if (Core\Session::isAdmin()) {
                     Deck</a>
             </div>
         </div>
-        <?php
+    <?php
     }
     ?>
     <button><a href="index.php?ctrl=card&action=creatDeckForm">Creer votre deck!</a></button>
     <?php
-} else if (Core\Session::getUser()) {
+} else if (App\Session::getUser()) {
 
     $decks = $result['data']['decks'];
     foreach ($decks as $deck) {
-        ?>
-            <div class="card text-center deck">
-                <img src="public/img/<?= $deck->getImgDeck() ?>" class="card-img-top" alt="imageDeck">
-                <div class="card-body">
-                    <h5 class="card-title">
+    ?>
+        <div class="card text-center deck">
+            <img src="public/img/<?= $deck->getImgDeck() ?>" class="card-img-top" alt="imageDeck">
+            <div class="card-body">
+                <h5 class="card-title">
                     <?= ucfirst($deck->getDeckName()) ?>
-                    </h5>
-                    <p class="card-text">
+                </h5>
+                <p class="card-text">
                     <?= $deck->getDeckPresentation() ?>
-                    </p>
-                    <a href="index.php?ctrl=card&action=detailDeck&id=<?= $deck->getId() ?>" class="btn btn-primary">Détail du
-                        Deck</a>
-                </div>
+                </p>
+                <a href="index.php?ctrl=card&action=detailDeck&id=<?= $deck->getId() ?>" class="btn btn-primary">Détail du
+                    Deck</a>
             </div>
+        </div>
 
-        <?php
+    <?php
     }
     ?>
-        <button><a href="index.php?ctrl=card&action=creatDeckForm">Creer votre deck!</a></button>
+    <button><a href="index.php?ctrl=card&action=creatDeckForm">Creer votre deck!</a></button>
     <?php
 } else {
 
     $decks = $result['data']['decks'];
     foreach ($decks as $deck) {
-        ?>
-            <div class="card text-center deck">
-                <img src="public/img/<?= $deck->getImgDeck() ?>" class="card-img-top" alt="imageDeck">
-                <div class="card-body">
-                    <h5 class="card-title">
+    ?>
+        <div class="card text-center deck">
+            <img src="public/img/<?= $deck->getImgDeck() ?>" class="card-img-top" alt="imageDeck">
+            <div class="card-body">
+                <h5 class="card-title">
                     <?= ucfirst($deck->getDeckName()) ?>
-                    </h5>
-                    <p class="card-text">
+                </h5>
+                <p class="card-text">
                     <?= $deck->getDeckPresentation() ?>
-                    </p>
-                    <a href="index.php?ctrl=card&action=detailDeck&id=<?= $deck->getId() ?>" class="btn btn-primary">Détail du
-                        Deck</a>
-                </div>
+                </p>
+                <a href="index.php?ctrl=card&action=detailDeck&id=<?= $deck->getId() ?>" class="btn btn-primary">Détail du
+                    Deck</a>
             </div>
+        </div>
 
-        <?php
+    <?php
     }
     ?>
-        <h2>Pour Creer un deck, Connectez-Vous!</h2>
-    <?php
+    <h2>Pour Creer un deck, Connectez-Vous!</h2>
+<?php
 }
 
 $title = "Les Decks";

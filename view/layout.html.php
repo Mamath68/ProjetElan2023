@@ -78,14 +78,14 @@
                         </ul>
                         <div class="d-flex mt-2">
                             <?php
-                            if (Core\Session::getUser()) {
+                            if (App\Session::getUser()) {
                             ?>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <?= Core\Session::getUser()->getPseudo() ?>
+                                        <?= App\Session::getUser()->getPseudo() ?>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="index.php?ctrl=home&action=detailUser&id=<?= Core\Session::getUser()->getId() ?>">Profile</a></li>
+                                        <li><a class="dropdown-item" href="index.php?ctrl=home&action=detailUser&id=<?= App\Session::getUser()->getId() ?>">Profile</a></li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>

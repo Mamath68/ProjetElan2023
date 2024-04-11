@@ -1,5 +1,6 @@
 <?php
-namespace Core;
+
+namespace App;
 
 abstract class Manager
 {
@@ -118,5 +119,4 @@ abstract class Manager
         }
         return false;
     }
-
 }

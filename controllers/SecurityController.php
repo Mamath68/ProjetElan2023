@@ -1,15 +1,10 @@
 <?php
 
-// Ouvre le namespace Controller
 namespace Controllers;
 
-// fait appel a Session dans dossier APP
-use Core\Session;
-// fait appel a AbstractController dans dossier APP
-use Core\AbstractController;
-// fait appel a ControllerInterface dans dossier APP
-use Core\ControllerInterface;
-// fait appel a UserManager dans sous-dossier Managers du dossier Model
+use App\Session;
+use App\AbstractController;
+use App\ControllerInterface;
 use Models\Managers\UserManager;
 
 // class securityController hérite de la classe AbstractController et implémente ControllerInterface.
@@ -60,8 +55,7 @@ class SecurityController extends AbstractController implements ControllerInterfa
 
                         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-                        if
-                        (
+                        if (
                             $manager->add([
                                 "pseudo" => $username,
                                 "email" => $email,
@@ -139,7 +133,6 @@ class SecurityController extends AbstractController implements ControllerInterfa
             "view" => VIEW_DIR . "security/deleteAccount.html.php",
             "data" => null,
         ];
-
     }
     public function deleteAccount($id)
     {

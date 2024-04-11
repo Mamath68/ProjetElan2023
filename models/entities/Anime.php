@@ -2,7 +2,7 @@
 
 namespace Models\Entities;
 
-use Core\Entity;
+use App\Entity;
 
 final class Anime extends Entity
 {
@@ -60,5 +60,4 @@ final class Anime extends Entity
     {
         return $this->getId() . " " . $this->getAnimeName() . " " . $this->getHistoire() . " " . $this->getImg();
     }
-
 }

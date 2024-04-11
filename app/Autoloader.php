@@ -1,5 +1,6 @@
 <?php
-namespace Core;
+
+namespace App;
 
 // Création de la classe Autoloader
 class Autoloader
@@ -39,6 +40,5 @@ class Autoloader
 
 			require $filepath;
 		}
-
 	}
 }

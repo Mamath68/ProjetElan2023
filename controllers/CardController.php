@@ -3,9 +3,9 @@
 // Ouvre le namespace Controllers
 namespace Controllers;
 
-use Core\Session;
-use Core\AbstractController;
-use Core\ControllerInterface;
+use App\Session;
+use App\AbstractController;
+use App\ControllerInterface;
 use Models\Managers\DeckManager;
 
 

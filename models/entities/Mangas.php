@@ -2,7 +2,7 @@
 
 namespace Models\Entities;
 
-use Core\Entity;
+use App\Entity;
 
 final class Mangas extends Entity
 {
@@ -60,5 +60,4 @@ final class Mangas extends Entity
     {
         return $this->getId() . " " . $this->getMangasName() . " " . $this->getHistoire() . " " . $this->getImg();
     }
-
 }

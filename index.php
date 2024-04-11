@@ -1,5 +1,6 @@
 <?php
-namespace Core;
+
+namespace App;
 
 define('DS', DIRECTORY_SEPARATOR); // le caractère séparateur de dossier (/ ou \)
 // meilleure portabilité sur les différents systêmes.
@@ -8,16 +9,16 @@ define('VIEW_DIR', BASE_DIR . "view/"); //le chemin où se trouvent les vues
 define('PUBLIC_DIR', "/public"); //le chemin où se trouvent les fichiers    publics (CSS, JS, IMG)
 
 define('DEFAULT_CTRL', 'Home'); //nom du contrôleur par défaut
-define('ADMIN_MAIL', "admin@gmail.com"); //mail de l'administrateur
-// Fait Appel A l'autoloader dans le dossier Core
-require("core/Autoloader.php");
+define('ADMIN_MAIL', "mathieu.stamm@gmail.com"); //mail de l'administrateur
+
+require("app/Autoloader.php");
 
 Autoloader::register();
 
 //démarre une session ou récupère la session actuelle
 session_start();
 //et on intègre la classe Session qui prend la main sur les messages en session
-use Core\Session as Session;
+use App\Session as Session;
 
 //---------REQUETE HTTP INTERCEPTEE-----------
 $ctrlname = DEFAULT_CTRL; //on prend le controller par défaut

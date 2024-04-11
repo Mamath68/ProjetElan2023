@@ -1,9 +1,9 @@
 <?php
 
-if (Core\Session::getUser()) {
+if (App\Session::getUser()) {
 ?>
     <h1 class="p-3">Bienvenue
-        <?= Core\Session::getUser()->getPseudo() ?>
+        <?= App\Session::getUser()->getPseudo() ?>
     </h1>
     </div>
 <?php

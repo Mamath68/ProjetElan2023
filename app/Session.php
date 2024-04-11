@@ -1,5 +1,6 @@
 <?php
-namespace Core;
+
+namespace App;
 
 // Creation de la classe session, qui gère les session
 class Session
@@ -49,5 +50,4 @@ class Session
         }
         return false;
     }
-
 }

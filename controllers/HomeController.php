@@ -3,8 +3,8 @@
 // Ouvre le namespace Controller
 namespace Controllers;
 
-use Core\AbstractController;
-use Core\ControllerInterface;
+use App\AbstractController;
+use App\ControllerInterface;
 use Models\Managers\UserManager;
 
 class HomeController extends AbstractController implements ControllerInterface
@@ -30,7 +30,7 @@ class HomeController extends AbstractController implements ControllerInterface
             throw new \ErrorException("Erreur lors de la récupération de la carte aleatoire : " . $th->getMessage());
         }
     }
-    
+
     public function users()
     {
         $userManager = new UserManager();

@@ -2,9 +2,9 @@
 
 namespace Controllers;
 
-use Core\Session;
-use Core\AbstractController;
-use Core\ControllerInterface;
+use App\Session;
+use App\AbstractController;
+use App\ControllerInterface;
 use Models\Managers\PublicationManager;
 use Models\Managers\CommentManager;
 use Models\Managers\ReponseManager;

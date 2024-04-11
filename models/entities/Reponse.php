@@ -2,7 +2,7 @@
 
 namespace Models\Entities;
 
-use Core\Entity;
+use App\Entity;
 
 final class Reponse extends Entity
 {
@@ -84,6 +84,4 @@ final class Reponse extends Entity
     {
         return $this->getId() . $this->getUserId() . " " . $this->getCommentId() . " " . $this->getBody() . " " . $this->getImg() . " " . $this->getReponseDate();
     }
-
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace App;
 
 // Reglage de l'affichage par défaut.
 interface ControllerInterface

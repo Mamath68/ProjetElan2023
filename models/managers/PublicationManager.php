@@ -2,8 +2,8 @@
 
 namespace Models\Managers;
 
-use Core\Manager;
-use Core\DAO;
+use App\Manager;
+use App\DAO;
 
 class PublicationManager extends Manager
 {
@@ -37,8 +37,7 @@ class PublicationManager extends Manager
             "";
         $sql = "SELECT p.id_publication, p.body, p.img, p.publicationDate, p.user_id
         FROM " . $this->tableName . " p
-        " . $orderQuery;
-        ;
+        " . $orderQuery;;
 
         return $this->getMultipleResults(
             DAO::select($sql),

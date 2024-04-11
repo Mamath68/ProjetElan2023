@@ -2,7 +2,7 @@
 
 namespace Models\Entities;
 
-use Core\Entity;
+use App\Entity;
 
 final class Comment extends Entity
 {
@@ -84,6 +84,4 @@ final class Comment extends Entity
     {
         return $this->getId() . $this->getUserId() . " " . $this->getPublicationId() . " " . $this->getBody() . " " . $this->getImage() . " " . $this->getCommentDate();
     }
-
-
 }
