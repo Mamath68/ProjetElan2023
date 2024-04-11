@@ -54,8 +54,9 @@ function displayResults(results) {
       // Ajoutez l'image de la carte à la carte Bootstrap
       const imageElement = document.createElement("img");
       imageElement.classList.add("card-img-top");
-      imageElement.src = card.card_images[0].image_url_small; // Utilisez l'URL de l'image de la carte
+      imageElement.src = card.card_images[0].image_url; // Utilisez l'URL de l'image de la carte
       imageElement.alt = card.name;
+      imageElement.style.width = "50%";
       cardElement.appendChild(imageElement);
 
       // Créez le corps de la carte Bootstrap

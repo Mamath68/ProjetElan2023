@@ -3,12 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/style.css">
-    <link rel="stylesheet" href="public/CSS/smartphone.css">
-    <link rel="stylesheet" href="public/CSS/tablette.css">
     <link rel="stylesheet" href="public/tarteaucitron/css/tarteaucitron.css">
     <script src="public/tarteaucitron/tarteaucitron.js"></script>
     <link rel="shortcut icon" href="public/img/favico.png" type="image/x-icon">
@@ -18,98 +15,100 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar bg-secondary navbar-expand-lg">
-            <div class="container">
-                <a class="navbar-brand" href="index.php?ctrl=home&action=index">
-                    Yugioh
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Yugioh</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.php?ctrl=home&action=index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.php?ctrl=socialnetwork&action=findAllPublications">Blog</a>
-                            </li>
+
+    
+    <nav class="navbar bg-secondary navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.php?ctrl=home&action=index">
+                Yugioh
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Yugioh</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php?ctrl=home&action=index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?ctrl=socialnetwork&action=findAllPublications">Blog</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Jeu de carte
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">Présentation des
+                                        Cartes</a></li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel" role="button">Formats
+                                        de
+                                        duels</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchForm" role="button">Recherches</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                L'univers Yugioh
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Animé</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-flex mt-2">
+                        <?php
+                        if (App\Session::getUser()) {
+                        ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Jeu de carte
+                                    <?= App\Session::getUser()->getPseudo() ?>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=presentation">Présentation des
-                                            Cartes</a></li>
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=typeofduel" role="button">Formats
-                                            de
-                                            duels</a></li>
+                                    <li><a class="dropdown-item" href="index.php?ctrl=home&action=detailUser&id=<?= App\Session::getUser()->getId() ?>">Profile</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="index.php?ctrl=card&action=searchForm" role="button">Recherches</a></li>
+                                    <li><a class="dropdown-item" href="index.php?ctrl=security&action=logout">Logout</a></li>
                                 </ul>
                             </li>
+                        <?php
+                        } else {
+                        ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    L'univers Yugioh
+                                    Connectiques
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="index.php?ctrl=mangas&action=findAllMangas">Mangas</a></li>
+                                    <li><a class="dropdown-item" href="index.php?ctrl=security&action=loginForm">Se Connecter</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="index.php?ctrl=anime&action=findAllAnime">Animé</a></li>
+                                    <li><a class="dropdown-item" href="index.php?ctrl=security&action=registerForm">S'enregistrer</a></li>
                                 </ul>
                             </li>
-                        </ul>
-                        <div class="d-flex mt-2">
-                            <?php
-                            if (App\Session::getUser()) {
-                            ?>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <?= App\Session::getUser()->getPseudo() ?>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="index.php?ctrl=home&action=detailUser&id=<?= App\Session::getUser()->getId() ?>">Profile</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="index.php?ctrl=security&action=logout">Logout</a></li>
-                                    </ul>
-                                </li>
-                            <?php
-                            } else {
-                            ?>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Connectiques
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="index.php?ctrl=security&action=loginForm">Se Connecter</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="index.php?ctrl=security&action=registerForm">S'enregistrer</a></li>
-                                    </ul>
-                                </li>
-                            <?php
-                            }
-                            ?>
-                        </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
+    <header>
+        
     </header>
-
     <main class="container">
         <?= $contenu ?>
     </main>
